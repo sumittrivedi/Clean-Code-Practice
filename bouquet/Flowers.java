@@ -2,6 +2,6 @@ package bouquet;
 
 public interface Flowers {
 	
-	public  int getCost(String flowerName) ;
+	public  int getCost() ;
 	
 }

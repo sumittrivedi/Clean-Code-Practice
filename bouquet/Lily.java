@@ -1,7 +1,7 @@
 package bouquet;
 
 public class Lily implements Flowers {
-	public int getCost(String flowerName)
+	public int getCost()
 	{
 		final int perUnitCost=40;
 		return perUnitCost;

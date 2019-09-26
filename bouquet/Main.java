@@ -9,19 +9,19 @@ import java.util.Scanner;
 
 public class Main {
 	
-	static HashMap<String, Integer> flowersCount = new HashMap<String,Integer>();
+	static HashMap<Flowers, Integer> flowersCount = new HashMap<Flowers,Integer>();
 
 	public static void main(String args[])
 	{
 		
 		System.out.println("Select Number of flowers to create your bouquet\n"
 				+ "Enter number of flower of each type sequentially\n"
-				+ "1.Rose\n2.Lily\n3.Lotus\n4.Jasmine\n");
+				+ "1.Rose\n2.Lily\n3.Jasmine\n4.Lotus\n");
 		Scanner input = new Scanner(System.in);
-		flowersCount.put("Rose", input.nextInt());
-		flowersCount.put("Lily", input.nextInt());
-		flowersCount.put("Lotus", input.nextInt());
-		flowersCount.put("Jasmine", input.nextInt());
+		flowersCount.put(new Rose(), input.nextInt());
+		flowersCount.put(new Lily(), input.nextInt());
+		flowersCount.put(new Jasmine(), input.nextInt());
+		flowersCount.put(new Lotus(), input.nextInt());
 		input.close();
 		Main obj= new Main();
 		System.out.println("Bouquet Cost = "+obj.bouquetCost());
@@ -32,13 +32,10 @@ public class Main {
 	{
 		int totalCost=0;
 		Iterator itr=flowersCount.entrySet().iterator();
-		Flowers obj;
 		while(itr.hasNext())
 		{
-			obj=new Rose();
 			Map.Entry mapElement = (Map.Entry)itr.next(); 
-			
-			totalCost += obj.getCost((String)mapElement.getKey()) * (int)mapElement.getValue();
+			totalCost += ((Flowers)mapElement.getKey()).getCost() * (int)mapElement.getValue();
 		}
 		return totalCost;
 	}
