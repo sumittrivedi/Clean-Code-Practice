@@ -19,9 +19,12 @@ public class Main {
 		sweetsDetails.put(new KajuKatli(),input.nextInt());
 		sweetsDetails.put(new KalaKand(),input.nextInt());
 		sweetsDetails.put(new Laddu(),input.nextInt());
-		input.close();
 		Main obj = new Main();
 		System.out.println("Total weight of gifts = "+ obj.totalGiftWeight());
+		System.out.println("Enter weight range to display gifts :");
+		Double range=input.nextDouble();
+		input.close();
+		obj.giftRange(chocoDetails,sweetsDetails, range);
 		
 	}
 	public double totalGiftWeight() 
@@ -42,7 +45,18 @@ public class Main {
 		}
 		return giftWt;
 	}
-
-	
+	void giftRange(HashMap<Chocolates, Integer> choco,HashMap<Sweets, Integer> sweets, Double range)
+	{
+		for(Map.Entry ran: choco.entrySet())
+			{
+			if(((Chocolates)ran.getKey()).getWeight()<range)
+			System.out.println(((Chocolates)ran.getKey()).getName()+"===>"+((Chocolates)ran.getKey()).getWeight());
+			}
+		for(Map.Entry ran: sweets.entrySet())
+		{
+			if(((Sweets)ran.getKey()).getWeight()<range)
+			System.out.println(((Sweets)ran.getKey()).getName()+"===>"+((Sweets)ran.getKey()).getWeight());
+		}
+	}
 	
 }
