@@ -1,29 +1,76 @@
 package com.epam.MovieTicketBooking;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 public class App {
 	public static void main(String[] args) {
 
 		DBoperations object = new CollectionDB();
-
+		
+		
 		ArrayList<String> locations = new ArrayList<String>();
-		locations.add("Hyderabad");
-		locations.add("Kolkata");
-		locations.add("Banglore");
-		locations.add("Chennai");
+		object.insert(locations,"Hyderabad");
+		object.insert(locations,"Kolkata");
+		object.insert(locations,"Banglore");
+		object.insert(locations,"Chennai");
+		
+		
+		/*
+		HashMap<String, ArrayList<String>> theatres = new HashMap<String, ArrayList<String>>();
+		theatres.put("Hyderabad", new ArrayList<String>(Arrays.asList("PVR", "Cinepolis", "INOX")));
+		theatres.put("Kolkata", new ArrayList<String>(Arrays.asList("INOX", "Carnival", "PVR")));
+		theatres.put("Banglore", new ArrayList<String>(Arrays.asList("PVR", "INOX", "Carnival")));
+		theatres.put("Chennai", new ArrayList<String>(Arrays.asList("INOX", "Cinepolis", "PVR")));
+		
+		Iterator<Entry<String, ArrayList<String>>> iterateTheatre = theatres.entrySet().iterator();
+		while(iterateTheatre.hasNext())
+		{
+			Iterator iterateMovies = (Iterator) iterateTheatre.next().getValue();
+			while(iterateMovies.hasNext())
+			{
+				HashMap<Object, ArrayList<String>> movies = new HashMap<Object, ArrayList<String>>();
+				ArrayList<String> moviesList = new ArrayList<String>();
+				movies.put(key, value)
+			}
+		}
+		
+		void setMovies(String locationName,String theatreName,String movieName)
+		{
+			HashMap<Theatres, Movies> theatres = new HashMap<Theatres, Movies>();
+			Iterator iterator = locations.iterator();
+			while (iterator.hasNext())
+			{
+				if((String)iterator.next() == locationName)
+				{
+				Theatres theatreObj = new Theatres();
+				Movies movieObj = new Movies();
+				theatreObj.setLocation((String)iterator.next());
+				theatreObj.setTheatreName(theatreName);
+				movieObj.setMovieName(movieName);
+				theatres.put(theatreObj, movieObj);
+				}
+			}
+		}
+		
+		*/ 
 
 		HashMap<String, ArrayList<String>> movies = new HashMap<String, ArrayList<String>>();
+		//object.put(movies,"Hyderabad", "Dream Girl");
 		movies.put("Hyderabad", new ArrayList<String>(Arrays.asList("Dream Girl", "Joker", "War")));
 		movies.put("Kolkata", new ArrayList<String>(Arrays.asList("Chhichore", "Joker", "War")));
 		movies.put("Banglore", new ArrayList<String>(Arrays.asList("Jai Ho", "Joker", "War")));
 		movies.put("Chennai", new ArrayList<String>(Arrays.asList("Bahubali", "Joker", "Chhichore")));
 
+		
+		
 		HashMap<String, ArrayList<String>> theatres = new HashMap<String, ArrayList<String>>();
 		theatres.put("Dream Girl", new ArrayList<String>(Arrays.asList("PVR", "Cinepolis", "INOX")));
 		theatres.put("Joker", new ArrayList<String>(Arrays.asList("INOX", "Carnival", "PVR")));
@@ -46,8 +93,10 @@ public class App {
 
 		System.out.println("Enter Location :\n");
 		object.display(locations);
+		
 		String locationChoice = input.nextLine();
 		System.out.println("Enter Movie Name :\n");
+		
 		object.display(movies, locationChoice);
 		String movieChoice = input.nextLine();
 		System.out.println("Enter Theatre Name :\n");
