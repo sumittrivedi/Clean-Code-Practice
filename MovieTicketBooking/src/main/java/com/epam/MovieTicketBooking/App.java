@@ -16,11 +16,7 @@ public class App {
 		DBoperations object = new CollectionDB();
 		
 		
-		ArrayList<String> locations = new ArrayList<String>();
-		object.insert(locations,"Hyderabad");
-		object.insert(locations,"Kolkata");
-		object.insert(locations,"Banglore");
-		object.insert(locations,"Chennai");
+		
 		
 		
 		/*
@@ -42,25 +38,7 @@ public class App {
 			}
 		}
 		
-		void setMovies(String locationName,String theatreName,String movieName)
-		{
-			HashMap<Theatres, Movies> theatres = new HashMap<Theatres, Movies>();
-			Iterator iterator = locations.iterator();
-			while (iterator.hasNext())
-			{
-				if((String)iterator.next() == locationName)
-				{
-				Theatres theatreObj = new Theatres();
-				Movies movieObj = new Movies();
-				theatreObj.setLocation((String)iterator.next());
-				theatreObj.setTheatreName(theatreName);
-				movieObj.setMovieName(movieName);
-				theatres.put(theatreObj, movieObj);
-				}
-			}
-		}
-		
-		*/ 
+		*/
 
 		HashMap<String, ArrayList<String>> movies = new HashMap<String, ArrayList<String>>();
 		//object.put(movies,"Hyderabad", "Dream Girl");

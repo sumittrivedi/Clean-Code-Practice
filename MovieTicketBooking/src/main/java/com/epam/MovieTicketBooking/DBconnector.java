@@ -2,7 +2,7 @@ package com.epam.MovieTicketBooking;
 
 public class DBconnector {
 	
-	DBoperations object = new CollectionDB();
-	
+	DBoperations obj = new CollectionDB();
+	obj.setLocation("Hyderabad");
 
 }
