@@ -1,8 +1,7 @@
-package com.epam.MovieTicketBooking;
+package com.epam.movieTicketBooking.dto;
 
-public class Movies {
-
-	String movieName;
+public class MovieDto {
+	private String movieName;
 
 	public String getMovieName() {
 		return movieName;
@@ -12,4 +11,6 @@ public class Movies {
 		this.movieName = movieName;
 	}
 	
+	
+
 }

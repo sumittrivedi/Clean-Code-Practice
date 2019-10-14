@@ -1,7 +1,7 @@
-package com.epam.MovieTicketBooking;
+package com.epam.movieTicketBooking.dto;
 
-public class Location {
-	String locationName;
+public class LocationDto {
+	private String locationName;
 
 	public String getLocationName() {
 		return locationName;
