@@ -8,9 +8,4 @@ public class MovieService {
 	{
 		new MovieDaoImpl().showMovies(userChoice);
 	}
-	public void addMovie()
-	{
-		new MovieDaoImpl().addMovies();
-	}
-
 }

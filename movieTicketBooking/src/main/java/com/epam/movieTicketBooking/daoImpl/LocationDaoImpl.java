@@ -11,12 +11,7 @@ public class LocationDaoImpl implements LocationDao {
 	
 	private static final Logger logger = LoggerFactory.getLogger(LocationDaoImpl.class);
 	
-	public void addLocation()
-	{
-		CollectionDB.locations.add(new LocationDto("Hyderabad"));
-		CollectionDB.locations.add(new LocationDto("Kolkata"));
-		CollectionDB.locations.add(new LocationDto("Banglore"));
-	}
+	
 	
 	public void showLocation()
 	{
