@@ -14,32 +14,36 @@ public class App {
 	private static final Logger logger = LoggerFactory.getLogger(App.class);
 
 	public static void main(String[] args) {
-		
+
 		CollectionDB.getInstance();
 		Scanner userChoice = new Scanner(System.in);
+		LocationService locationService = new LocationService();
+		MovieService movieService = new MovieService();
+		TheatreService theatreService = new TheatreService();
+		TicketService ticketService = new TicketService();
+		String locationChoice,movieChoice,ticketChoice;
+		int noOfSeats;
+		
 		logger.info("Location where we serve");
 		
-		
-		new LocationService().showLocation();
+		locationService.showLocation();
 		logger.info("Choose Location :");
-		String locationChoice = userChoice.nextLine();
-		
-		
-		new MovieService().showMovie(locationChoice);
+		locationChoice = userChoice.nextLine();
+
+		movieService.showMovie(locationChoice);
 		logger.info("Choose Movie :");
-		String movieChoice = userChoice.nextLine();
-		
-		new TheatreService().showTheartre(locationChoice, movieChoice);
-		
-		new TicketService().showTicketType();
+		movieChoice = userChoice.nextLine();
+
+		theatreService.showTheartre(locationChoice, movieChoice);
+
+		ticketService.showTicketType();
 		logger.info("Choose Ticket type :");
-		String ticketChoice = userChoice.nextLine();
+		ticketChoice = userChoice.nextLine();
 		
 		logger.info("Enter number of seats :");
-		int noOfSeats = userChoice.nextInt();
-		
-		logger.info("Total Price  = {}",new TicketService().calculatePrice(ticketChoice, noOfSeats));
-		
+		noOfSeats = userChoice.nextInt();
+		logger.info("Total Price  = {}", new TicketService().calculatePrice(ticketChoice, noOfSeats));
+
 		userChoice.close();
 	}
 }
