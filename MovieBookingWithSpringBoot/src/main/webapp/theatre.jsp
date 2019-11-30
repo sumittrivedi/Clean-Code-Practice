@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>Select Theatre</h1>
-	<form action="dateTime" method="get">
+	<form action="date" method="get">
 		<select name="theatreChoice">
 			<c:forEach var="theatre" items="${theatreList}">
 				<option>${theatre.theatreName}</option>

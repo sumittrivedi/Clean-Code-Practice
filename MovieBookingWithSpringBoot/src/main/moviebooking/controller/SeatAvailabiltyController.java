@@ -1,4 +1,4 @@
-package com.epam.moviebooking.controller;
+package com.epam.moviebooking.restcontroller;
 
 import javax.servlet.http.HttpSession;
 
