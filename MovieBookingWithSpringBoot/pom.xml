@@ -8,11 +8,19 @@
 		<version>2.2.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+<<<<<<< HEAD
 	<groupId>com.epam</groupId>
 	<artifactId>MovieBookingWithRest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>MovieBookingWithRest</name>
 	<description>Rest Implementation for movie ticket booking</description>
+=======
+	<groupId>com.example</groupId>
+	<artifactId>MovieBookingWithSpringBoot</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>MovieBookingWithSpringBoot</name>
+	<description>Demo project for Spring Boot</description>
+>>>>>>> ff05cef73f99839d37d18a6c1961ffb3fd51d4ea
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -25,12 +33,18 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+<<<<<<< HEAD
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+=======
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+>>>>>>> ff05cef73f99839d37d18a6c1961ffb3fd51d4ea
 <dependency>
     <groupId>org.apache.tomcat</groupId>
     <artifactId>tomcat-jasper</artifactId>
@@ -41,6 +55,10 @@
     <artifactId>jstl</artifactId>
     <version>1.2</version>
 </dependency>
+<<<<<<< HEAD
+=======
+
+>>>>>>> ff05cef73f99839d37d18a6c1961ffb3fd51d4ea
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>

@@ -10,10 +10,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "theatredetails")
 public class TheatreDto {
-<<<<<<< HEAD
-	
-=======
->>>>>>> ff05cef73f99839d37d18a6c1961ffb3fd51d4ea
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "TheatreID")

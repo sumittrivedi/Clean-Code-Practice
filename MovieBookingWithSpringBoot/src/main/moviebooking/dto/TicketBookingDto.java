@@ -6,19 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-<<<<<<< HEAD
-import org.springframework.stereotype.Component;
-
-@Component
 @Entity
 @Table(name = "ticketbookingdetails")
 public class TicketBookingDto {
-	
-=======
-@Entity
-@Table(name = "ticketbookingdetails")
-public class TicketBookingDto {
->>>>>>> ff05cef73f99839d37d18a6c1961ffb3fd51d4ea
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int bookingId;
@@ -32,10 +22,6 @@ public class TicketBookingDto {
 	private int ExecutiveSeats;
 	private String customerName;
 	private String mobileNo;
-<<<<<<< HEAD
-	
-=======
->>>>>>> ff05cef73f99839d37d18a6c1961ffb3fd51d4ea
 	public int getBookingId() {
 		return bookingId;
 	}
