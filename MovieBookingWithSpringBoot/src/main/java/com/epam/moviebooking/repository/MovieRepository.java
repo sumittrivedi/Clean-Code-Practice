@@ -12,7 +12,10 @@ import com.epam.moviebooking.dto.MovieDto;
 @Repository
 public interface MovieRepository extends CrudRepository<MovieDto, Integer> {
 
-	@Query(nativeQuery = true ,value="select * from moviedetails where moviedetails.TheatreID IN(select TheatreID from theatredetails where theatredetails.LocationID IN (select LocationID from locationdetails where locationdetails.LocationName=?1))")
+	@Query(nativeQuery = true ,value="select * from moviedetails where moviedetails.TheatreID IN"
+			+ "(select TheatreID from theatredetails where theatredetails.LocationID IN "
+			+ "(select LocationID from locationdetails where locationdetails.LocationName=?1))"
+			+ "GROUP BY MovieName HAVING COUNT(MovieName) >= 1")
 	List<MovieDto> movieByLocation(@Param("locationChoice") String locationChoice);
 }
 

@@ -10,10 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "theatredetails")
 public class TheatreDto {
-<<<<<<< HEAD
-	
-=======
->>>>>>> ff05cef73f99839d37d18a6c1961ffb3fd51d4ea
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "TheatreID")
@@ -24,6 +21,19 @@ public class TheatreDto {
 	
 	@Column(name = "TheatreName")
 	private String theatreName;
+	
+	
+
+	public TheatreDto() {
+		super();
+	}
+	
+	public TheatreDto(int theatreId, int locationId, String theatreName) {
+		super();
+		this.theatreId = theatreId;
+		this.locationId = locationId;
+		this.theatreName = theatreName;
+	}
 
 	public int getTheatreId() {
 		return theatreId;

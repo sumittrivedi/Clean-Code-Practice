@@ -10,18 +10,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "showtiming")
 public class TimeDto {
-<<<<<<< HEAD
 	
-=======
->>>>>>> ff05cef73f99839d37d18a6c1961ffb3fd51d4ea
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int timeId;
 	LocalTime time;
-<<<<<<< HEAD
 	
-=======
->>>>>>> ff05cef73f99839d37d18a6c1961ffb3fd51d4ea
+	public TimeDto() {
+		super();
+	}
+	public TimeDto(int timeId, LocalTime time) {
+		super();
+		this.timeId = timeId;
+		this.time = time;
+	}
 	public int getTimeId() {
 		return timeId;
 	}

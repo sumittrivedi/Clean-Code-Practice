@@ -10,6 +10,17 @@ import javax.persistence.Table;
 @Table(name = "moviedetails")
 public class MovieDto {
 	
+	public MovieDto() {
+		super();
+	}
+
+	public MovieDto(int movieId, String movieName, int theatreId) {
+		super();
+		this.movieId = movieId;
+		this.movieName = movieName;
+		this.theatreId = theatreId;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int movieId;

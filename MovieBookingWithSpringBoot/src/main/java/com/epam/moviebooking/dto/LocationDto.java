@@ -11,6 +11,7 @@ import javax.persistence.Table;
 @Table(name="locationdetails")
 public class LocationDto {
 	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="LocationID")
@@ -18,6 +19,17 @@ public class LocationDto {
 	
 	@Column(name="LocationName")
 	private String locationName;
+	
+	public LocationDto()
+	{
+		
+	}
+
+	public LocationDto(int locationId, String locationName) {
+		super();
+		this.locationId = locationId;
+		this.locationName = locationName;
+	}
 
 	public int getLocationId() {
 		return locationId;
@@ -33,6 +45,12 @@ public class LocationDto {
 
 	public void setLocationName(String locationName) {
 		this.locationName = locationName;
+	}
+	
+
+	@Override
+	public String toString() {
+		return "LocationDto [locationId=" + locationId + ", locationName=" + locationName + "]";
 	}
 	
 
