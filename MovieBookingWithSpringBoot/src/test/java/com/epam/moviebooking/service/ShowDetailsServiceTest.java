@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 class ShowDetailsServiceTest {
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void getShowId() {
+		
 	}
 
 }

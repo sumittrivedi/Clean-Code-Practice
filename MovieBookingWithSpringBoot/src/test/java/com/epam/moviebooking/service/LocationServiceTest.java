@@ -49,7 +49,6 @@ class LocationServiceTest {
 		locationDtoList.add(obj6);
 		locationDtoList.add(obj7);
 		
-		System.out.println(locationDtoList);
 		
 		when((List<LocationDto>)locationRepository.findAll()).thenReturn(locationDtoList);
 		assertEquals(locationRepository.findAll(), locationDtoList);

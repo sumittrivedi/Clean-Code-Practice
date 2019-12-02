@@ -35,9 +35,10 @@ class TheatreServiceTest {
 	@Test
 	void getTheatreId() 
 	{
-		TheatreDto dto = new TheatreDto(1,1,"PVR Cyberabad");
-		when(theatreRepository.findByTheatreName("PVR Cyberabad").stream().findFirst().orElse(null)).thenReturn(dto);
-//		when(dto.getTheatreId()).thenReturn(1);
+		List<TheatreDto> theatreDtoList = new ArrayList<TheatreDto>();
+		theatreDtoList.add(new TheatreDto(1,1,"PVR Cyberabad"));
+		when(theatreRepository.findByTheatreName("PVR Cyberabad")).thenReturn(theatreDtoList);
+		when(dto.getTheatreId()).thenReturn(1);
 		assertEquals(theatreService.getTheatreId("PVR Cyberabad"), 1);
 	}
 

@@ -1,14 +1,40 @@
 package com.epam.moviebooking.service;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoSettings;
+
+import com.epam.moviebooking.dto.TicketBookingDto;
+import com.epam.moviebooking.repository.TicketBookingRepository;
 
 class TicketPriceServiceTest {
 
+	@Mock
+	private TicketBookingRepository ticketBookingRepository;
+	@Mock
+	private TicketBookingDto dto;
+	
+	@InjectMocks
+	private TicketBookingService ticketBookingService;
+	
+	@BeforeEach
+	void init()
+	{
+		MockitoAnnotations.initMocks(this);
+	}
+	
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void setTicketBookingDetails() 
+	{
+		
+		when(ticketBookingRepository.save(dto)).thenReturn(dto);
+		assertEquals(ticketBookingService.setTicketBookingDetails(dto), dto);
 	}
 
 }

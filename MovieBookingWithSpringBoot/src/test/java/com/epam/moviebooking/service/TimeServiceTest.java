@@ -1,6 +1,7 @@
 package com.epam.moviebooking.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -19,9 +20,9 @@ import com.epam.moviebooking.repository.TimeRepository;
 class TimeServiceTest {
 	
 	@Mock
-	TimeRepository timeRepository;
+	private TimeRepository timeRepository;
 	@InjectMocks
-	TimeService timeService;
+	private TimeService timeService;
 	
 	@BeforeEach
 	public void init() 
@@ -43,9 +44,8 @@ class TimeServiceTest {
 		timeList.add(obj3);
 		timeList.add(obj4);
 		timeList.add(obj5);
-		System.out.println(timeService.getTime(LocalDate.now()).get(0).getTime());
-		System.out.println(timeList.get(0).getTime());
-		assertEquals(timeList, timeService.getTime(LocalDate.now()));
+		when(timeRepository.findAll()).thenReturn(timeList);
+		assertEquals(timeService.getTime(LocalDate.now().plusDays(1)),timeList);
 	}
 
 }
