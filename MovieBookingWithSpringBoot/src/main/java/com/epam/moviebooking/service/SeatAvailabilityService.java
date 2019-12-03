@@ -20,17 +20,18 @@ public class SeatAvailabilityService {
 	@Autowired
 	private AvailableSeatDto availableSeatDto;
 	
+	private final int maxPremiumSeats = 20;
+	private final int maxExecutiveSeats = 80;
+	
 	public AvailableSeatDto getAvailableSeat(int showId)
 	{	
 		availableSeatOptional = availableSeatRepository.findById(showId);	
 		if(availableSeatOptional.isPresent() == false)
 		{
 			availableSeatDto.setShowId(showId);
-			availableSeatDto.setPremiumAvailability(20);
-			availableSeatDto.setExecutiveAvailabilty(80);
 			SeatAvailabilityService.setAvailableSeat(availableSeatDto);
+			availableSeatOptional = availableSeatRepository.findById(showId);
 		}
-		availableSeatOptional = availableSeatRepository.findById(showId);
 		return availableSeatOptional.get();
 		
 	}
@@ -46,6 +47,8 @@ public class SeatAvailabilityService {
 	}
 	private void setAvailableSeat(AvailableSeatDto availableSeatDto)
 	{
+		availableSeatDto.setPremiumAvailability(maxPremiumSeats);
+		availableSeatDto.setExecutiveAvailabilty(maxExecutiveSeats);
 		availableSeatRepository.save(availableSeatDto);
 	}
 

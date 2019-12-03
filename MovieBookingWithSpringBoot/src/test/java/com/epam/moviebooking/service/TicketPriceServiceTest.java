@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoSettings;
 
 import com.epam.moviebooking.dto.TicketBookingDto;
 import com.epam.moviebooking.repository.TicketBookingRepository;

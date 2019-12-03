@@ -1,10 +1,9 @@
-package com.epam.moviebooking.restcontroller;
-
-import javax.servlet.http.HttpSession;
+package com.epam.moviebooking.webservices.restcontroller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.epam.moviebooking.dto.AvailableSeatDto;
@@ -19,15 +18,11 @@ public class TicketPriceRestController {
 	@Autowired
 	private SeatAvailabilityService seatAvailabilityService;
 	
-	@GetMapping(value = "ticketPrice")
-	public Double TicketPriceServlet(@RequestParam int premiumSeatChoice ,@RequestParam int executiveSeatChoice ,HttpSession session)
+	@GetMapping(value = "restTicketPrice/{premiumSeatChoice}/{executiveSeatChoice}")
+	public Double ticketPriceRestController(@PathVariable int premiumSeatChoice ,@PathVariable int executiveSeatChoice ,@RequestBody AvailableSeatDto availableSeatDto)
 	{
-		session.setAttribute("premiumSeatChoice", premiumSeatChoice);
-		session.setAttribute("executiveSeatChoice", executiveSeatChoice);
-		AvailableSeatDto availableSeatDto = (AvailableSeatDto) session.getAttribute("availableSeatDto");
 		seatAvailabilityService.updateSeats(availableSeatDto,premiumSeatChoice,executiveSeatChoice);
 		Double ticketPrice = ticketPriceService.calculatePrice(premiumSeatChoice,executiveSeatChoice);
-		session.setAttribute("ticketPrice", ticketPrice);
 		return ticketPrice;
 	}
 

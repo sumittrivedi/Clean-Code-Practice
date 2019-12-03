@@ -29,8 +29,8 @@ public class ShowDetailsService {
 			showDetailDto.setDate(date);
 			showDetailDto.setTime(time);
 			ShowDetailsService.setShowId(showDetailDto);
+			showDetailsOptional = showDetailsRepository.findByTheatreIdAndDateAndTime(theatreId,date,time);
 		}
-		showDetailsOptional = showDetailsRepository.findByTheatreIdAndDateAndTime(theatreId,date,time);
 		return showDetailsOptional.get().getShowId();
 	}
 	

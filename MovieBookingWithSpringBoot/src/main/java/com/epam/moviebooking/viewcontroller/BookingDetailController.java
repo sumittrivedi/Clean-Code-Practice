@@ -1,27 +1,26 @@
-package com.epam.moviebooking.restcontroller;
+package com.epam.moviebooking.viewcontroller;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.epam.moviebooking.dto.TicketBookingDto;
-import com.epam.moviebooking.service.TicketBookingService;
+import com.epam.moviebooking.webservices.restclient.BookingDetailRestClient;
 
-@RestController
-public class BookingDetailRestController {
+@Controller
+public class BookingDetailController {
 
 	@Autowired
-	private TicketBookingService ticketBookingService;
-	@Autowired
-	private TicketBookingDto ticketBookingDto;
+	private BookingDetailRestClient bookingDetailRestClient;
 	
 	@PostMapping("bookingDetail")
-	public TicketBookingDto BookingDetailServlet(@RequestParam String cus_name, @RequestParam String contact_no, HttpSession session)
+	public ModelAndView BookingDetailServlet(@RequestParam String cus_name, @RequestParam String contact_no, HttpSession session)
 	{
-		
+		ModelAndView mv = new ModelAndView();
 		session.setAttribute("cus_name", cus_name);
 		session.setAttribute("contact_no", contact_no);
 		String locationChoice = (String) session.getAttribute("locationChoice"); 
@@ -33,6 +32,7 @@ public class BookingDetailRestController {
 		int executiveSeatChoice = (int) session.getAttribute("executiveSeatChoice");
 		Double ticketPrice = (Double) session.getAttribute("ticketPrice");
 		
+		TicketBookingDto ticketBookingDto = new TicketBookingDto();
 		ticketBookingDto.setLocationName(locationChoice);
 		ticketBookingDto.setMovieName(movieChoice);
 		ticketBookingDto.setTheatreName(theatreChoice);
@@ -44,7 +44,8 @@ public class BookingDetailRestController {
 		ticketBookingDto.setCustomerName(cus_name);
 		ticketBookingDto.setMobileNo(contact_no);
 		
-		TicketBookingDto dto = ticketBookingService.setTicketBookingDetails(ticketBookingDto);
-		return dto;
+		bookingDetailRestClient.setTicketBookingDetails(ticketBookingDto);
+		mv.setViewName("bookingDetail");
+		return mv;
 	}
 }

@@ -32,9 +32,6 @@ class SeatAvailabilityServiceTest {
 	@Test
 	void getAvailableSeat() 
 	{
-		availableSeatDto.setShowId(184);
-		availableSeatDto.setExecutiveAvailabilty(0);
-		availableSeatDto.setPremiumAvailability(3);
 		when(availableSeatRepository.findById(184)).thenReturn(Optional.of(availableSeatDto));
 		assertEquals(seatAvailabilityService.getAvailableSeat(184), availableSeatDto);
 	}

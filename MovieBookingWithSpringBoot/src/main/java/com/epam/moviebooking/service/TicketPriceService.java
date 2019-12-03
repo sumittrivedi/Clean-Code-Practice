@@ -5,9 +5,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class TicketPriceService {
 	
+	private final double premiumSeatPrice = 150.00;
+	private final double executiveSeatPrice = 100.00;
+	
 	public double calculatePrice(int premiumSeatChoice,int executiveSeatChoice)
 	{
-		return 150*premiumSeatChoice + 100*executiveSeatChoice ;
+		return premiumSeatPrice*premiumSeatChoice + executiveSeatPrice*executiveSeatChoice ;
 	}
 
 }
