@@ -24,7 +24,7 @@ class TimeRestControllerTest {
 	void getTime() 
 	{
 		int i =0;
-		RestAssured.baseURI = "http://localhost:8080/time";
+		RestAssured.baseURI = "http://localhost:8080/restTime";
 		RequestSpecification reqspec = RestAssured.given();
 		Response response= reqspec.get("?dateChoice="+currentDate+"");
 		assertEquals("application/json", response.getContentType());

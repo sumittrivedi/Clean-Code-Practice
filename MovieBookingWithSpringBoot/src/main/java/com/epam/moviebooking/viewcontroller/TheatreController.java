@@ -20,7 +20,7 @@ public class TheatreController {
 	private TheatreRestClient theatreRestClient;
 	
 	@RequestMapping("theatre")
-	public ModelAndView TheatreServlet(@RequestParam String movieChoice, HttpSession session)
+	public ModelAndView getTheatre(@RequestParam String movieChoice, HttpSession session)
 	{
 		ModelAndView mv = new ModelAndView();
 		session.setAttribute("movieChoice", movieChoice);	

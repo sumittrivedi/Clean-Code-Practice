@@ -2,7 +2,6 @@ package com.epam.moviebooking.restcontroller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
@@ -18,19 +17,20 @@ class BookingDetailsRestControllerTest {
 		RestAssured.baseURI = "http://localhost:8080";
 		RequestSpecification reqspec = RestAssured.given();
 		JSONObject jsonObj = new JSONObject();
-		jsonObj.put("locationChoice","Hyderabad");
-		jsonObj.put("movieChoice","War" );
-		jsonObj.put("theatreChoice","PVR Cyberabad");
-		jsonObj.put("dateChoice", "2019-11-30");
-		jsonObj.put("timeChoice", "8:00:00");
-		jsonObj.put("premiumChoice","1" );
-		jsonObj.put("executiveChoice","1" );
-		jsonObj.put("ticketPrice","250" );
-		jsonObj.put("cus_name","Sumit" );
-		jsonObj.put("contact_no","1254125412" );
-		
-		 Response response = reqspec.post("/bookingDetail");
-		 assertEquals(response.getStatusCode(), "201");
+		jsonObj.put("locationName", "Kolkata");
+		jsonObj.put("movieName", "Aami Bengali" );
+		jsonObj.put("theatreName", "PVR Newtown");
+		jsonObj.put("date", "2019-12-02");
+		jsonObj.put( "time", "08:00:00");
+		jsonObj.put("premiumSeats",1 );
+		jsonObj.put("executiveSeats", 2 );
+		jsonObj.put("price", 350.0 );
+		jsonObj.put("customerName", "Sumit" );
+		jsonObj.put("mobileNo", "1254125412");
+		reqspec.header("Content-Type", "application/json");
+		reqspec.body(jsonObj.toString());
+		Response response = reqspec.post("/restBookingDetail");
+		assertEquals(response.getStatusCode(), 200);
 		assertEquals("application/json", response.getContentType());
 	}
 

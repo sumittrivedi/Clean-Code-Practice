@@ -23,7 +23,7 @@ class MovieRestControllerTest {
 	void getMovieOfHyderabad()
 	{
 		int i =0;
-		RestAssured.baseURI = "http://localhost:8080/movie";
+		RestAssured.baseURI = "http://localhost:8080/restMovie";
 		RequestSpecification reqspec = RestAssured.given();
 		Response response= reqspec.get("?locationChoice=Hyderabad");
 		JsonPath jp = response.jsonPath();

@@ -16,9 +16,11 @@ public class BookingDetailController {
 
 	@Autowired
 	private BookingDetailRestClient bookingDetailRestClient;
+	@Autowired
+	private TicketBookingDto ticketBookingDto;
 	
 	@PostMapping("bookingDetail")
-	public ModelAndView BookingDetailServlet(@RequestParam String cus_name, @RequestParam String contact_no, HttpSession session)
+	public ModelAndView setBookingDetail(@RequestParam String cus_name, @RequestParam String contact_no, HttpSession session)
 	{
 		ModelAndView mv = new ModelAndView();
 		session.setAttribute("cus_name", cus_name);
@@ -32,12 +34,11 @@ public class BookingDetailController {
 		int executiveSeatChoice = (int) session.getAttribute("executiveSeatChoice");
 		Double ticketPrice = (Double) session.getAttribute("ticketPrice");
 		
-		TicketBookingDto ticketBookingDto = new TicketBookingDto();
 		ticketBookingDto.setLocationName(locationChoice);
 		ticketBookingDto.setMovieName(movieChoice);
 		ticketBookingDto.setTheatreName(theatreChoice);
 		ticketBookingDto.setDate(dateChoice);
-		ticketBookingDto.setTime(timeChoice);	
+		ticketBookingDto.setTime(timeChoice);
 		ticketBookingDto.setPremiumSeats(premiumSeatChoice);
 		ticketBookingDto.setExecutiveSeats(executiveSeatChoice);
 		ticketBookingDto.setPrice(ticketPrice);

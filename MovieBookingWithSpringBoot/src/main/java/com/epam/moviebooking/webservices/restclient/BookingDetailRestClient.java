@@ -10,9 +10,10 @@ public class BookingDetailRestClient
 {
 	RestTemplate restTemplate = new RestTemplate();
 	
-	public void setTicketBookingDetails(TicketBookingDto ticketBookingDto)
+	public TicketBookingDto setTicketBookingDetails(TicketBookingDto ticketBookingDto)
 	{
-		
+		return restTemplate.postForEntity("http://localhost:8080/restBookingDetail", ticketBookingDto, TicketBookingDto.class).getBody();
+
 	}
 
 }

@@ -24,7 +24,7 @@ public class SeatAvailabiltyRestController {
 	private ShowDetailsService showDetailsService;
 	
 	@GetMapping(value = "restSeatAvailabilty", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<AvailableSeatDto> seatAvailabilityRestController(@RequestParam String dateChoice,@RequestParam String timeChoice,@RequestParam String theatreChoice)
+	public ResponseEntity<AvailableSeatDto> getAvailabileSeats(@RequestParam String theatreChoice,@RequestParam String dateChoice,@RequestParam String timeChoice)
 	{
 		int theatreId = theatreService.getTheatreId(theatreChoice);
 		int showId = showDetailsService.getShowId(theatreId, dateChoice, timeChoice);	

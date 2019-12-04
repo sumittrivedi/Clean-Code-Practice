@@ -17,7 +17,7 @@ public class LocationController {
 	LocationRestclient locationRestclient;
 	
 	@RequestMapping("location")
-	public ModelAndView locationServlet()
+	public ModelAndView getLocation()
 	{
 		List<LocationDto> locationList = locationRestclient.getLocation();
 		ModelAndView mv = new ModelAndView();

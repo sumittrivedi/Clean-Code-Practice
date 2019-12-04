@@ -22,4 +22,6 @@ public class TheatreRestClient
 				new ParameterizedTypeReference<List<TheatreDto>>(){});
 		return theatreResponseEntity.getBody();
 	}
+	
+	
 }

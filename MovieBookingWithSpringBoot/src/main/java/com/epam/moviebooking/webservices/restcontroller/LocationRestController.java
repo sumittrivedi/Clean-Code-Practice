@@ -19,7 +19,7 @@ public class LocationRestController {
 	private LocationService locationservice;
 	
 	@GetMapping(value = "restLocation" , produces={MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<List<LocationDto>> locationServlet()
+	public ResponseEntity<List<LocationDto>> getLocation()
 	{
 		List<LocationDto> locationList = locationservice.getLocation();
 		return new ResponseEntity<List<LocationDto>>(locationList, HttpStatus.OK);

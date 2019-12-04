@@ -20,7 +20,7 @@ public class TheatreRestController {
 	private TheatreService theatreService;
 	
 	@GetMapping(value="restTheatre", produces={MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<List<TheatreDto>> TheatreServlet(@RequestParam String locationChoice, @RequestParam String movieChoice)
+	public ResponseEntity<List<TheatreDto>> getTheatre(@RequestParam String locationChoice, @RequestParam String movieChoice)
 	{
 		List<TheatreDto> theatreList = theatreService.theatreByMovie(locationChoice, movieChoice);		
 		return new ResponseEntity<List<TheatreDto>>(theatreList, HttpStatus.OK);

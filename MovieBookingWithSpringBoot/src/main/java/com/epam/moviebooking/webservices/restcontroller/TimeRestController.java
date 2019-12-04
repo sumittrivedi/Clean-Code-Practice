@@ -21,7 +21,7 @@ public class TimeRestController {
 	private TimeService timeService;
 	
 	@GetMapping(value = "restTime",produces = {MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<List<TimeDto>> TimeServlet(@RequestParam String dateChoice)
+	public ResponseEntity<List<TimeDto>> getTime(@RequestParam String dateChoice)
 	{
 		LocalDate date = LocalDate.parse(dateChoice);
 		List<TimeDto> timeList = timeService.getTime(date);

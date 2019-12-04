@@ -19,7 +19,7 @@ public class DateController {
 	private DateRestClient dateRestClient;
 	
 	@GetMapping(value="date")
-	public ModelAndView DateServlet(@RequestParam String theatreChoice,HttpSession session)
+	public ModelAndView getDate(@RequestParam String theatreChoice,HttpSession session)
 	{
 		ModelAndView mv = new ModelAndView();
 		session.setAttribute("theatreChoice", theatreChoice);

@@ -24,9 +24,9 @@ class TheatreRestControllerTest {
 	void getTheatre() 
 	{
 		int i =0;
-		RestAssured.baseURI = "http://localhost:8080/theatre";
+		RestAssured.baseURI = "http://localhost:8080/restTheatre";
 		RequestSpecification reqspec = RestAssured.given();
-		Response response= reqspec.get("?movieChoice=War");
+		Response response= reqspec.get("?locationChoice=Hyderabad&movieChoice=War");
 		JsonPath jp = response.jsonPath();
 		List<String> theatreList = jp.getList("theatreName");
 		for(String str : theatreList)

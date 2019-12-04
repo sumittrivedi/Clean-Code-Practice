@@ -24,7 +24,7 @@ class DateRestControllerTest {
 	void getDate() {
 		
 		int i =0;
-		RestAssured.baseURI = "http://localhost:8080/date";
+		RestAssured.baseURI = "http://localhost:8080/restDate";
 		RequestSpecification reqspec = RestAssured.given();
 		Response response= reqspec.get("?theatreChoice=PVR Cyberabad");
 		assertEquals("application/json", response.getContentType());

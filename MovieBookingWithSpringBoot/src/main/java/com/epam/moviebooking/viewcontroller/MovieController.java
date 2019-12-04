@@ -20,7 +20,7 @@ public class MovieController {
 	private MovieRestClient movieRestClient;
 	
 	@RequestMapping("movie")
-	public ModelAndView movieServlet(@RequestParam("locationChoice") String locationChoice,HttpSession session )
+	public ModelAndView getMovie(@RequestParam("locationChoice") String locationChoice,HttpSession session )
 	{
 		ModelAndView mv = new ModelAndView();
 		session.setAttribute("locationChoice", locationChoice);

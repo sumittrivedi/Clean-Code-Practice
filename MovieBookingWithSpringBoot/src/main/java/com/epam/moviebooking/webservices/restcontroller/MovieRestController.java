@@ -19,7 +19,7 @@ public class MovieRestController {
 	private MovieService movieService;
 	
 	@GetMapping(value = "restMovie", produces={MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<List<MovieDto>> movieServlet(@RequestParam("locationChoice") String locationChoice)
+	public ResponseEntity<List<MovieDto>> getMovie(@RequestParam("locationChoice") String locationChoice)
 	{
 		List<MovieDto> movieList = movieService.movieByLocation(locationChoice);
 		return new ResponseEntity<List<MovieDto>>(movieList, HttpStatus.OK);

@@ -18,7 +18,7 @@ public class DateRestController {
 	private DateService dateService;
 	
 	@GetMapping(value = "restDate", produces={MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<List<LocalDate>> DateServlet()
+	public ResponseEntity<List<LocalDate>> getdate()
 	{
 		List<LocalDate> dateList = dateService.getDate();
 		return new ResponseEntity<List<LocalDate>>(dateList, HttpStatus.OK);

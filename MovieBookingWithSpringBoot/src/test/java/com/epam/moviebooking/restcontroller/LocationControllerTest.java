@@ -21,7 +21,7 @@ class LocationControllerTest {
 	void getLocation() {
 		
 		int i =0;
-		RestAssured.baseURI = "http://localhost:8080/location";
+		RestAssured.baseURI = "http://localhost:8080/restLocation";
 		RequestSpecification reqspec = RestAssured.given();
 		Response response= reqspec.get();
 		assertEquals(200, response.getStatusCode());
