@@ -22,6 +22,7 @@ public class BookingDetailController {
 	@PostMapping("bookingDetail")
 	public ModelAndView setBookingDetail(@RequestParam String cus_name, @RequestParam String contact_no, HttpSession session)
 	{
+		
 		ModelAndView mv = new ModelAndView();
 		session.setAttribute("cus_name", cus_name);
 		session.setAttribute("contact_no", contact_no);

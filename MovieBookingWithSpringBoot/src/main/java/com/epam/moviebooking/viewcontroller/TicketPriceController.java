@@ -12,20 +12,19 @@ import com.epam.moviebooking.webservices.restclient.TicketPriceRestClient;
 
 @Controller
 public class TicketPriceController {
-	
+
 	@Autowired
 	private TicketPriceRestClient ticketPriceRestClient;
-	
+
 	@RequestMapping(value = "ticketPrice")
-	public ModelAndView getTicketPrice(@RequestParam int premiumSeatChoice ,@RequestParam int executiveSeatChoice ,HttpSession session)
-	{
+	public ModelAndView getTicketPrice(@RequestParam int premiumSeatChoice, @RequestParam int executiveSeatChoice,
+			HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		session.setAttribute("premiumSeatChoice", premiumSeatChoice);
 		session.setAttribute("executiveSeatChoice", executiveSeatChoice);
-		Double ticketPrice = ticketPriceRestClient.calculatePrice(premiumSeatChoice,executiveSeatChoice);
+		Double ticketPrice = ticketPriceRestClient.calculatePrice(premiumSeatChoice, executiveSeatChoice);
 		session.setAttribute("ticketPrice", ticketPrice);
 		mv.setViewName("ticketPrice");
 		return mv;
 	}
-
 }
