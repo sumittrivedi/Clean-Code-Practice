@@ -17,11 +17,9 @@ public class SeatAvailabiltyController {
 	@Autowired
 	private SeatAvailabilityRestClient seatAvailabilityRestClient;
 	
-	
 	@GetMapping("seatAvailabilty")
 	public ModelAndView seatAvailability(@RequestParam String timeChoice,HttpSession session)
 	{
-	
 		ModelAndView mv = new ModelAndView();
 		session.setAttribute("timeChoice", timeChoice);
 		String dateChoice =  (String) session.getAttribute("dateChoice");

@@ -1,0 +1,36 @@
+.main
+{
+	width:350px;
+	height:650px;
+	border:2px solid black;
+	
+	background-color: #d9d9d9;
+	border-radius:20px;
+	margin: auto;
+	margin-top: 150px;
+	padding: auto;
+}
+input,select,tr
+{
+	width: 90%;
+	height: 30px;
+	border-radius:5px;
+	margin: 15px;
+}
+
+
+button
+{
+	width: 40%;
+	height: 30px;
+	border-radius:5px;
+	margin: 15px;
+}
+button:hover
+{
+	background-color: #999999;
+}
+h1,p
+{
+	text-align: center;
+}

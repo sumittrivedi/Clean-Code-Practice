@@ -28,6 +28,8 @@ public class ShowDetailsDto {
 	@Column(name = "time")
 	String time;
 	
+	String bookedSeats;
+	
 
 	public int getShowId() {
 		return showId;
@@ -52,6 +54,12 @@ public class ShowDetailsDto {
 	}
 	public void setTime(String time) {
 		this.time = time;
+	}
+	public String getBookedSeats() {
+		return bookedSeats;
+	}
+	public void setBookedSeats(String bookedSeats) {
+		this.bookedSeats = bookedSeats;
 	}
 	
 

@@ -38,5 +38,14 @@ public class ShowDetailsService {
 	{
 		showDetailsRepository.save(showDetailsDto);
 	}
+	
+	public String getBookedSeats(int theatreId,String date,String time)
+	{
+		String bookedSeats = null;
+		showDetailsOptional = showDetailsRepository.findByTheatreIdAndDateAndTime(theatreId,date,time);
+		if(showDetailsOptional.isPresent())
+			bookedSeats = showDetailsOptional.get().getBookedSeats();
+		return bookedSeats;
+	}
 
 }
