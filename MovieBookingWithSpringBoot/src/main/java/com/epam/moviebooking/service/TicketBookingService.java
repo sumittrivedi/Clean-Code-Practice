@@ -1,5 +1,7 @@
 package com.epam.moviebooking.service;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,9 @@ public class TicketBookingService {
 	
 	public TicketBookingDto setTicketBookingDetails(TicketBookingDto dto)
 	{
+		Random random = new Random();
+		int bookingId = random.nextInt();
+		dto.setBookingId(bookingId);
 		return ticketBookingRepository.save(dto);
 	}
 

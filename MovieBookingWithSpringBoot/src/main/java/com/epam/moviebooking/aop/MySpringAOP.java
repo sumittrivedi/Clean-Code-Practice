@@ -1,7 +1,5 @@
 package com.epam.moviebooking.aop;
 
-import java.util.Arrays;
-
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -25,7 +23,6 @@ public class MySpringAOP {
 	@AfterReturning(value = "execution(* getAvailabileSeats(..))", returning = "returnObj")
 	public void getAvailabileSeatsRestCon(JoinPoint joinPoint, Object returnObj)
 	{
-		logger.info("Args = "+Arrays.asList(joinPoint.getArgs()));
 		logger.info(returnObj.toString());
 	}
 	

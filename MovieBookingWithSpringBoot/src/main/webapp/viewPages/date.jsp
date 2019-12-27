@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="main">
-	<h1>Select Date and Time</h1>
+	<h1>Select Date</h1>
 	<form action="time" method="get">
 		<select name="dateChoice">
 			<c:forEach var="date" items="${dateList}">

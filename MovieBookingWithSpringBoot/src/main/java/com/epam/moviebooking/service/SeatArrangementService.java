@@ -48,4 +48,17 @@ public class SeatArrangementService {
 		}
 		return seatDetails;
 	}
+	
+	public String getSeatIds(String seatInfos)
+	{
+		StringBuilder seatIds = new StringBuilder();
+		String[] selectedSeats = seatInfos.split(",");
+		for (String str : selectedSeats) 
+		{
+			String[] subStrings = str.split(" ");
+			seatIds.append(subStrings[0]+" ");
+		}
+		return seatIds.toString();
+	}
+	 
 }

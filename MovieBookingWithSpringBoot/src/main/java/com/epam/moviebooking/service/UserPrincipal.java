@@ -24,7 +24,7 @@ public class UserPrincipal implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		
-		return Collections.singleton(new SimpleGrantedAuthority("USER"));
+		return Collections.singleton(new SimpleGrantedAuthority(userDto.getRole()));
 	}
 
 	@Override
@@ -39,6 +39,7 @@ public class UserPrincipal implements UserDetails {
 		return userDto.getUsername();
 	}
 
+	
 	@Override
 	public boolean isAccountNonExpired() {
 			return true;

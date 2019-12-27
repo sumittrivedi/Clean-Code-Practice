@@ -17,7 +17,7 @@
 		<hr>
 		
 		<label>Name</label> 
-		<input type="text" name="cus_name" pattern="^[a-zA-Z]+$" required>
+		<input type="text" name="cus_name" pattern="^[a-zA-Z\s]+$" required>
 		<br><br>
 		
 		<label>Contact Number</label> 

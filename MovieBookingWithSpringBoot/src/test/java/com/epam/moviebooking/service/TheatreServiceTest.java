@@ -39,7 +39,7 @@ class TheatreServiceTest {
 		theatreDtoList.add(new TheatreDto(1,1,"PVR Cyberabad"));
 		when(theatreRepository.findByTheatreName("PVR Cyberabad")).thenReturn(theatreDtoList);
 		when(dto.getTheatreId()).thenReturn(1);
-		assertEquals(theatreService.getTheatreId("PVR Cyberabad"), 1);
+		assertEquals(1,theatreService.getTheatreId("PVR Cyberabad"));
 	}
 
 	@Test

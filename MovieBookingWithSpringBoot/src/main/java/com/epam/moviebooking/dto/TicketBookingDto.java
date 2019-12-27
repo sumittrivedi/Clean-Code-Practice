@@ -22,8 +22,7 @@ public class TicketBookingDto {
 	private String theatreName;
 	private String date;
 	private String time;
-	private int premiumSeats;
-	private int ExecutiveSeats;
+	private String seatIds;
 	private String customerName;
 	private String mobileNo;
 	
@@ -69,17 +68,11 @@ public class TicketBookingDto {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public int getPremiumSeats() {
-		return premiumSeats;
+	public String getSeatIds() {
+		return seatIds;
 	}
-	public void setPremiumSeats(int premiumSeats) {
-		this.premiumSeats = premiumSeats;
-	}
-	public int getExecutiveSeats() {
-		return ExecutiveSeats;
-	}
-	public void setExecutiveSeats(int executiveSeats) {
-		ExecutiveSeats = executiveSeats;
+	public void setSeatIds(String seatIds) {
+		this.seatIds = seatIds;
 	}
 	public String getCustomerName() {
 		return customerName;
@@ -97,16 +90,6 @@ public class TicketBookingDto {
 	public String toString() {
 		return "TicketBookingDto [bookingId=" + bookingId + ", locationName=" + locationName + ", price=" + price
 				+ ", movieName=" + movieName + ", theatreName=" + theatreName + ", date=" + date + ", time=" + time
-				+ ", premiumSeats=" + premiumSeats + ", ExecutiveSeats=" + ExecutiveSeats + ", customerName="
-				+ customerName + ", mobileNo=" + mobileNo + ", getBookingId()=" + getBookingId()
-				+ ", getLocationName()=" + getLocationName() + ", getPrice()=" + getPrice() + ", getMovieName()="
-				+ getMovieName() + ", getTheatreName()=" + getTheatreName() + ", getDate()=" + getDate()
-				+ ", getTime()=" + getTime() + ", getPremiumSeats()=" + getPremiumSeats() + ", getExecutiveSeats()="
-				+ getExecutiveSeats() + ", getCustomerName()=" + getCustomerName() + ", getMobileNo()=" + getMobileNo()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+				+ ", seatIds=" + seatIds + ", customerName=" + customerName + ", mobileNo=" + mobileNo + "]";
 	}
-	
-	
-
 }

@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>Registration</title>
-<link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 <script type="text/javascript">
 
 function checkPassword(form)
@@ -39,13 +39,14 @@ function checkPassword(form)
 		<h1>Register Yourself</h1>
 		<hr>
 
-		<form method="post" action="" onsubmit="return checkPassword(this);">
+		<form method="post" action="addUser" onsubmit="return checkPassword(this);">
 
-			<input type="email" name="email" placeholder="Email" required> 
+			<input type="email" name="username" placeholder="Email" required> 
 			<input type="password" name="password" placeholder="Password" required> 
 			<input type="password" name="cpassword" placeholder="Confirm Password" required>
-			<button type="submit">Register</button>
+			
 			<button type="reset">Reset</button>
+			<button type="submit">Register</button>
 
 		</form>
 	</div>

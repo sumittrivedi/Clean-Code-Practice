@@ -28,4 +28,10 @@ public class TimeService {
 			}
 			return timeDtoList1;
 	}
+	
+	public List<TimeDto> timeDetails()
+	{
+		List<TimeDto> timeDtoList = (List<TimeDto>) timeRepository.findAll();
+		return timeDtoList;
+	}
 }

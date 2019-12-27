@@ -26,5 +26,14 @@ public class UserService implements UserDetailsService {
 	
 		return new UserPrincipal(userDto.get());
 	}
+	
+	public void addUser(String username, String password)
+	{
+		UserDto userDto = new UserDto();
+		userDto.setUsername(username);
+		userDto.setPassword(password);
+		userDto.setRole("USER");
+		userRepository.save(userDto);
+	}
 
 }

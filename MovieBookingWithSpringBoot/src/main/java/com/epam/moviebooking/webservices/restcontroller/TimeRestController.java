@@ -27,5 +27,11 @@ public class TimeRestController {
 		List<TimeDto> timeList = timeService.getTime(date);
 		return new ResponseEntity<List<TimeDto>>(timeList, HttpStatus.OK);
 	}
-
+	
+	@GetMapping(value = "restTimeDetails",produces = {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<List<TimeDto>> timeDetails()
+	{
+		List<TimeDto> timeList = timeService.timeDetails();
+		return new ResponseEntity<List<TimeDto>>(timeList, HttpStatus.OK);
+	}
 }

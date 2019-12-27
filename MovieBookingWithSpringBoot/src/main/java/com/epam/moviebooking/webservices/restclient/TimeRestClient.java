@@ -22,4 +22,11 @@ public class TimeRestClient
 				.exchange("http://localhost:8080/restTime?dateChoice="+date, HttpMethod.GET, null, new ParameterizedTypeReference<List<TimeDto>>(){});
 		return timeDtoResEntity.getBody();
 	}
+	
+	public List<TimeDto> timeDetails()
+	{
+		ResponseEntity<List<TimeDto>> timeDtoResEntity = restTemplate
+				.exchange("http://localhost:8080/restTimeDetails", HttpMethod.GET, null, new ParameterizedTypeReference<List<TimeDto>>(){});
+		return timeDtoResEntity.getBody();
+	}
 }

@@ -22,4 +22,12 @@ public class MovieRestClient
 				new ParameterizedTypeReference<List<MovieDto>>(){});
 		return locationResponseEntity.getBody();
 	}
+	
+	public List<MovieDto> movieDetails()
+	{
+		ResponseEntity<List<MovieDto>> locationResponseEntity = restTemplate
+				.exchange("http://localhost:8080/restMovieDetails", HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<MovieDto>>(){});
+		return locationResponseEntity.getBody();
+	}
 }

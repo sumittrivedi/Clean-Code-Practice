@@ -19,7 +19,7 @@ public class TheatreController {
 	@Autowired
 	private TheatreRestClient theatreRestClient;
 	
-	@RequestMapping("theatre")
+	@RequestMapping(value = "theatre")
 	public ModelAndView getTheatre(@RequestParam String movieChoice, HttpSession session)
 	{
 		ModelAndView mv = new ModelAndView();

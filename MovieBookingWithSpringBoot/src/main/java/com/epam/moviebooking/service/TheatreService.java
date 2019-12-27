@@ -24,4 +24,10 @@ public class TheatreService {
 		TheatreDto dto = theatreRepository.findByTheatreName(theatreName).stream().findFirst().orElse(null);
 		return dto.getTheatreId();
 	}
+	
+	public List<TheatreDto> theatreDetails()
+	{
+		return (List<TheatreDto>) theatreRepository.findAll();
+	}
+	
 }

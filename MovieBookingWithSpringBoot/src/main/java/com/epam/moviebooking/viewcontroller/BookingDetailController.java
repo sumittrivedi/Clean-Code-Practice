@@ -31,22 +31,21 @@ public class BookingDetailController {
 		String theatreChoice = (String) session.getAttribute("theatreChoice");
 		String dateChoice = (String) session.getAttribute("dateChoice");
 		String timeChoice = (String) session.getAttribute("timeChoice");
-		int premiumSeatChoice = (int) session.getAttribute("premiumSeatChoice");
-		int executiveSeatChoice = (int) session.getAttribute("executiveSeatChoice");
-		Double ticketPrice = (Double) session.getAttribute("ticketPrice");
+		String seatIds = (String) session.getAttribute("seatIds");
+		Double totalticketPrice = (Double) session.getAttribute("totalticketPrice");
 		
 		ticketBookingDto.setLocationName(locationChoice);
 		ticketBookingDto.setMovieName(movieChoice);
 		ticketBookingDto.setTheatreName(theatreChoice);
 		ticketBookingDto.setDate(dateChoice);
 		ticketBookingDto.setTime(timeChoice);
-		ticketBookingDto.setPremiumSeats(premiumSeatChoice);
-		ticketBookingDto.setExecutiveSeats(executiveSeatChoice);
-		ticketBookingDto.setPrice(ticketPrice);
+		ticketBookingDto.setSeatIds(seatIds);
+		ticketBookingDto.setPrice(totalticketPrice);
 		ticketBookingDto.setCustomerName(cus_name);
 		ticketBookingDto.setMobileNo(contact_no);
 		
-		bookingDetailRestClient.setTicketBookingDetails(ticketBookingDto);
+		TicketBookingDto ticketDetails = bookingDetailRestClient.setTicketBookingDetails(ticketBookingDto);
+		mv.addObject("ticketDetails", ticketDetails);
 		mv.setViewName("bookingDetail");
 		return mv;
 	}

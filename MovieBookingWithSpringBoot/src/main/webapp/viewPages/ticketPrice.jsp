@@ -10,12 +10,12 @@
 </head>
 <body>
 	<div class="main">
-	Your Ticket Price =
-	<c:out value="${ticketPrice}" />
+	<p>Your Ticket Price =
+	<c:out value="${totalticketPrice}" />
 	<br>
 	<br>
 	<form action="customer" method="get">
-		<input type="submit" value="Next">
+		<input type="submit" value="Confirm Booking">
 	</form>
 	</div>
 </body>

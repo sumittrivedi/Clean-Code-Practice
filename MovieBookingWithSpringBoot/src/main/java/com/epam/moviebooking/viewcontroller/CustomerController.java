@@ -7,8 +7,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class CustomerController {
 
-	@RequestMapping("customer")
-	public ModelAndView CustomerServlet()
+	@RequestMapping(value = "customer")
+	public ModelAndView customerServlet()
 	{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("customer");

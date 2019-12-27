@@ -4,17 +4,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.SortedMap;
-import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.epam.moviebooking.dto.SeatArrangementDto;
 import com.epam.moviebooking.dto.SeatInfoDto;
 import com.epam.moviebooking.service.SeatArrangementService;
 import com.epam.moviebooking.service.TheatreService;

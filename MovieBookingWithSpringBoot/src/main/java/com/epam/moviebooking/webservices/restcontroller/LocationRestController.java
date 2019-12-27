@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.epam.moviebooking.dto.LocationDto;
@@ -23,5 +25,12 @@ public class LocationRestController {
 	{
 		List<LocationDto> locationList = locationservice.getLocation();
 		return new ResponseEntity<List<LocationDto>>(locationList, HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "restAddLocation" , produces={MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<String> addLocation(@RequestParam("locationName") String locationName)
+	{
+		locationservice.addLocation(locationName);
+		return new ResponseEntity<String>("Location Added successfully", HttpStatus.OK);
 	}
 }

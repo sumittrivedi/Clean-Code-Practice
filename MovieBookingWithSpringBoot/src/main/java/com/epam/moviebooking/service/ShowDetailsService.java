@@ -12,23 +12,25 @@ import com.epam.moviebooking.repository.ShowDetailsRepository;
 public class ShowDetailsService {
 	
 	@Autowired
-	ShowDetailsService ShowDetailsService;
+	private ShowDetailsService showDetailsService;
 	@Autowired
-	ShowDetailsRepository showDetailsRepository;
+	private ShowDetailsRepository showDetailsRepository;
 	@Autowired
-	Optional<ShowDetailsDto> showDetailsOptional;
+	private Optional<ShowDetailsDto> showDetailsOptional;
 	@Autowired
-	ShowDetailsDto showDetailDto;
+	private ShowDetailsDto showDetailsDto;
 	
 	public int getShowId(int theatreId,String date,String time)
 	{	
 		showDetailsOptional = showDetailsRepository.findByTheatreIdAndDateAndTime(theatreId,date,time);
+		
+		
 		if(showDetailsOptional.isPresent() == false)
 		{
-			showDetailDto.setTheatreId(theatreId);
-			showDetailDto.setDate(date);
-			showDetailDto.setTime(time);
-			ShowDetailsService.setShowId(showDetailDto);
+			showDetailsDto.setTheatreId(theatreId);
+			showDetailsDto.setDate(date);
+			showDetailsDto.setTime(time);
+			showDetailsService.setShowId(showDetailsDto);
 			showDetailsOptional = showDetailsRepository.findByTheatreIdAndDateAndTime(theatreId,date,time);
 		}
 		return showDetailsOptional.get().getShowId();
@@ -47,5 +49,26 @@ public class ShowDetailsService {
 			bookedSeats = showDetailsOptional.get().getBookedSeats();
 		return bookedSeats;
 	}
-
+	
+	public void updateBookedSeats(int theatreId,String date,String time,String selectedSeats)
+	{
+		StringBuilder seatIds = new StringBuilder(selectedSeats);
+		String bookedSeats = showDetailsService.getBookedSeats(theatreId, date, time);
+		Optional<String> bookedSeatsOptional = Optional.ofNullable(bookedSeats);
+		if (bookedSeatsOptional.isPresent()) 
+		{
+			Optional<ShowDetailsDto> dto = showDetailsRepository.findByTheatreIdAndDateAndTime(theatreId, date, time);
+			seatIds.append(bookedSeats);
+			dto.get().setBookedSeats(seatIds.toString());
+			showDetailsRepository.save(dto.get());
+		}
+		else
+		{
+			showDetailsDto.setTheatreId(theatreId);
+			showDetailsDto.setDate(date);
+			showDetailsDto.setTime(time);
+			showDetailsDto.setBookedSeats(seatIds.toString());
+			showDetailsRepository.save(showDetailsDto);
+		}
+	}
 }

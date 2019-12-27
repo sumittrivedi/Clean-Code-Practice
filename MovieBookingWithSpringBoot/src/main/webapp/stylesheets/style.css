@@ -1,16 +1,18 @@
 .main
 {
-	width:350px;
-	height:650px;
+	min-width:350px;
+	min-height:600px;
+	width:fit-content;
+	height:fit-content;
 	border:2px solid black;
 	
 	background-color: #d9d9d9;
 	border-radius:20px;
 	margin: auto;
 	margin-top: 150px;
-	padding: auto;
+	padding: 10px;
 }
-input,select,tr
+input,select
 {
 	width: 90%;
 	height: 30px;
@@ -33,4 +35,26 @@ button:hover
 h1,p
 {
 	text-align: center;
+}
+.img {
+	
+	width : 90%;
+	margin: 5%;
+}
+img
+{
+	border-radius:20px;
+	width : 100%;
+}
+
+table
+{
+padding :5%;
+margin: 10px;
+text-align: center;
+}
+table th
+{
+padding : 5px;
+margin: 5px;
 }

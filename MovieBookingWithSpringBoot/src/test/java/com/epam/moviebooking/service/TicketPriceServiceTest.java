@@ -31,7 +31,6 @@ class TicketPriceServiceTest {
 	@Test
 	void setTicketBookingDetails() 
 	{
-		
 		when(ticketBookingRepository.save(dto)).thenReturn(dto);
 		assertEquals(ticketBookingService.setTicketBookingDetails(dto), dto);
 	}

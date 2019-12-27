@@ -20,8 +20,8 @@ public class TimeController {
 	@Autowired
 	private TimeRestClient timeRestClient;
 	
-	@RequestMapping("time")
-	public ModelAndView TimeServlet(@RequestParam String dateChoice,HttpSession session)
+	@RequestMapping(value = "time")
+	public ModelAndView timeServlet(@RequestParam String dateChoice,HttpSession session)
 	{
 		LocalDate date = LocalDate.parse(dateChoice);
 		ModelAndView mv = new ModelAndView();

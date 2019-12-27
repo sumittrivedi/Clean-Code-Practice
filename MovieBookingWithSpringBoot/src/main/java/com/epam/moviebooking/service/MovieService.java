@@ -18,4 +18,8 @@ public class MovieService {
 	{
 		return movieRepository.movieByLocation(locationChoice);
 	}
+	public List<MovieDto> findAll()
+	{
+		return (List<MovieDto>) movieRepository.findAll();
+	}
 }

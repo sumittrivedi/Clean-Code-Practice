@@ -1,28 +1,21 @@
 package com.epam.moviebooking.service;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.stereotype.Service;
-
-import com.epam.moviebooking.dto.SeatInfoDto;
 
 @Service
 public class TicketPriceService {
 	
-	public double calculatePrice(List<SeatInfoDto> seatInfos)
+	public double calculatePrice(String seatInfos)
 	{
-		double totalTicketCost = 0.00;
-		System.out.println("Inside TicketPriceService"+seatInfos);
-		
-		for (SeatInfoDto seatInfoDto : seatInfos) 
+		Double totalticketPrice = 0.00;
+		String[] selectedSeats = seatInfos.split(",");
+		for (String str : selectedSeats) 
 		{
-			totalTicketCost += seatInfoDto.getCost();
-			System.out.println("Inside forloop TicketPriceService"+totalTicketCost);
-			
+			String[] subStrings = str.split(" ");
+			totalticketPrice += Double.parseDouble(subStrings[1]);
 		}
-			
-		return totalTicketCost;
+		return totalticketPrice;
 	}
 
 }

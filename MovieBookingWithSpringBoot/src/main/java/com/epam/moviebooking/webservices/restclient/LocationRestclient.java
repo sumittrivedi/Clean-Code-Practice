@@ -22,4 +22,11 @@ public class LocationRestclient {
 				new ParameterizedTypeReference<List<LocationDto>>(){});
 		return locationResponseEntity.getBody();
 	}
+	
+	public void  addLocation(String locationName)
+	{
+		
+//		return restTemplate.postForEntity("http://localhost:8080/restAddLocation", String, String.class).getBody();
+
+	}
 }

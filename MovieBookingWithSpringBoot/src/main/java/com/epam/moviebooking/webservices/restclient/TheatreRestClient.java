@@ -23,5 +23,12 @@ public class TheatreRestClient
 		return theatreResponseEntity.getBody();
 	}
 	
-	
+	public List<TheatreDto> theatreDetails()
+	{
+		ResponseEntity<List<TheatreDto>> theatreResponseEntity = restTemplate
+				.exchange("http://localhost:8080/restTheatreDetails", HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<TheatreDto>>(){});
+		
+		return theatreResponseEntity.getBody();
+	}
 }

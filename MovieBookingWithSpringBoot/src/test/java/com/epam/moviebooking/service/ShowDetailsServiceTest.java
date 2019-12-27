@@ -39,7 +39,7 @@ class ShowDetailsServiceTest {
 		dto.setDate("2019-11-29");
 		dto.setTime("8:00:00");
 		when(showDetailsRepository.findByTheatreIdAndDateAndTime(1,"2019-11-29", "8:00:00")).thenReturn(Optional.of(dto));
-		assertEquals(showDetailsService.getShowId(1,"2019-11-29", "8:00:00"),222);
+		assertEquals(222,showDetailsService.getShowId(1,"2019-11-29", "8:00:00"));
 	}
 
 }
