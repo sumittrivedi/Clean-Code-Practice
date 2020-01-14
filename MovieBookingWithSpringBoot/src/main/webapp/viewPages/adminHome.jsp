@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <title>Admin Home Page</title>
 <link rel="stylesheet" type="text/css" href="stylesheets/style.css">

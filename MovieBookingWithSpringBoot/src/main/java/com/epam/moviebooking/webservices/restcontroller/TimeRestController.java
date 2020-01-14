@@ -25,13 +25,13 @@ public class TimeRestController {
 	{
 		LocalDate date = LocalDate.parse(dateChoice);
 		List<TimeDto> timeList = timeService.getTime(date);
-		return new ResponseEntity<List<TimeDto>>(timeList, HttpStatus.OK);
+		return new ResponseEntity<>(timeList, HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "restTimeDetails",produces = {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<List<TimeDto>> timeDetails()
 	{
 		List<TimeDto> timeList = timeService.timeDetails();
-		return new ResponseEntity<List<TimeDto>>(timeList, HttpStatus.OK);
+		return new ResponseEntity<>(timeList, HttpStatus.OK);
 	}
 }

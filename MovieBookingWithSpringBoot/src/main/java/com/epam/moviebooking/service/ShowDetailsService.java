@@ -23,9 +23,7 @@ public class ShowDetailsService {
 	public int getShowId(int theatreId,String date,String time)
 	{	
 		showDetailsOptional = showDetailsRepository.findByTheatreIdAndDateAndTime(theatreId,date,time);
-		
-		
-		if(showDetailsOptional.isPresent() == false)
+		if(! showDetailsOptional.isPresent())
 		{
 			showDetailsDto.setTheatreId(theatreId);
 			showDetailsDto.setDate(date);
@@ -33,7 +31,9 @@ public class ShowDetailsService {
 			showDetailsService.setShowId(showDetailsDto);
 			showDetailsOptional = showDetailsRepository.findByTheatreIdAndDateAndTime(theatreId,date,time);
 		}
-		return showDetailsOptional.get().getShowId();
+		if(showDetailsOptional.isPresent())
+			showDetailsDto = showDetailsOptional.get();
+		return showDetailsDto.getShowId();
 	}
 	
 	private void setShowId(ShowDetailsDto showDetailsDto)
@@ -59,8 +59,12 @@ public class ShowDetailsService {
 		{
 			Optional<ShowDetailsDto> dto = showDetailsRepository.findByTheatreIdAndDateAndTime(theatreId, date, time);
 			seatIds.append(bookedSeats);
-			dto.get().setBookedSeats(seatIds.toString());
-			showDetailsRepository.save(dto.get());
+			if (dto.isPresent())
+			{
+				dto.get().setBookedSeats(seatIds.toString());
+				showDetailsRepository.save(dto.get());
+			}
+				
 		}
 		else
 		{

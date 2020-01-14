@@ -17,7 +17,7 @@ import io.restassured.specification.RequestSpecification;
 @SpringBootTest
 class TheatreRestControllerTest {
 
-	ArrayList<String> warTheatre = new ArrayList<String>(Arrays.asList("PVR Cyberabad","INOX Hitech City"));
+	ArrayList<String> warTheatre = new ArrayList<String>(Arrays.asList("PVR Cyberabad"));
 
 	
 	@Test

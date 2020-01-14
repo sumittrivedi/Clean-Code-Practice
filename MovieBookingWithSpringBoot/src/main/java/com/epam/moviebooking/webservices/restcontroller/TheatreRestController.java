@@ -23,14 +23,14 @@ public class TheatreRestController {
 	public ResponseEntity<List<TheatreDto>> getTheatre(@RequestParam String locationChoice, @RequestParam String movieChoice)
 	{
 		List<TheatreDto> theatreList = theatreService.theatreByMovie(locationChoice, movieChoice);		
-		return new ResponseEntity<List<TheatreDto>>(theatreList, HttpStatus.OK);
+		return new ResponseEntity<>(theatreList, HttpStatus.OK);
 	}
 	
 	@GetMapping(value="restTheatreDetails", produces={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<List<TheatreDto>> theatreDetails()
 	{
 		List<TheatreDto> theatreList = theatreService.theatreDetails();		
-		return new ResponseEntity<List<TheatreDto>>(theatreList, HttpStatus.OK);
+		return new ResponseEntity<>(theatreList, HttpStatus.OK);
 	}
 
 }

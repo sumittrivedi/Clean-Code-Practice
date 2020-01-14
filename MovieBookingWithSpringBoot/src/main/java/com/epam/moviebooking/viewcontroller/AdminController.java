@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.epam.moviebooking.dto.LocationDto;
@@ -28,13 +28,13 @@ public class AdminController {
 	@Autowired
 	private TimeRestClient timeRestClient;
 	
-	@RequestMapping(value = "admin")
+	@GetMapping(value = "admin")
 	public String adminPage()
 	{
 		return "adminHome";
 	}
 	
-	@RequestMapping(value = "locationDetails")
+	@GetMapping(value = "locationDetails")
 	public ModelAndView locationDetails()
 	{
 		ModelAndView mv = new ModelAndView();
@@ -44,7 +44,7 @@ public class AdminController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "theatreDetails")
+	@GetMapping(value = "theatreDetails")
 	public ModelAndView theatreDetails()
 	{
 		ModelAndView mv = new ModelAndView();
@@ -55,7 +55,7 @@ public class AdminController {
 
 	}
 	
-	@RequestMapping(value = "movieDetails")
+	@GetMapping(value = "movieDetails")
 	public ModelAndView movieDetails()
 	{
 		ModelAndView mv = new ModelAndView();
@@ -66,7 +66,7 @@ public class AdminController {
 
 	}
 	
-	@RequestMapping(value = "timeDetails")
+	@GetMapping(value = "timeDetails")
 	public ModelAndView timeDetails()
 	{
 		ModelAndView mv = new ModelAndView();

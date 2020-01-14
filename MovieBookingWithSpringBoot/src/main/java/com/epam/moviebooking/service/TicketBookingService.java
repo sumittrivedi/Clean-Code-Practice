@@ -1,5 +1,7 @@
 package com.epam.moviebooking.service;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +16,9 @@ public class TicketBookingService {
 	@Autowired
 	TicketBookingRepository ticketBookingRepository; 
 	
-	public TicketBookingDto setTicketBookingDetails(TicketBookingDto dto)
+	public TicketBookingDto setTicketBookingDetails(TicketBookingDto dto) throws NoSuchAlgorithmException
 	{
-		Random random = new Random();
+		Random random = SecureRandom.getInstanceStrong();
 		int bookingId = random.nextInt();
 		dto.setBookingId(bookingId);
 		return ticketBookingRepository.save(dto);

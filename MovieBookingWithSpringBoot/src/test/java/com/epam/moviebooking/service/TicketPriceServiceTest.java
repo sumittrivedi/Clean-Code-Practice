@@ -3,6 +3,8 @@ package com.epam.moviebooking.service;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
+import java.security.NoSuchAlgorithmException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -29,7 +31,7 @@ class TicketPriceServiceTest {
 	}
 	
 	@Test
-	void setTicketBookingDetails() 
+	void setTicketBookingDetails() throws NoSuchAlgorithmException 
 	{
 		when(ticketBookingRepository.save(dto)).thenReturn(dto);
 		assertEquals(ticketBookingService.setTicketBookingDetails(dto), dto);

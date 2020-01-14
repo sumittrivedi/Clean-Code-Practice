@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Customer Details</title>
@@ -17,11 +17,11 @@
 		<hr>
 		
 		<label>Name</label> 
-		<input type="text" name="cus_name" pattern="^[a-zA-Z\s]+$" required>
+		<input type="text" name="customerName" pattern="^[a-zA-Z\s]+$" required>
 		<br><br>
 		
-		<label>Contact Number</label> 
-		<input type="text" pattern="[6-9]{1}[0-9]{9}" name="contact_no" required>
+		<label>Mobile Number</label> 
+		<input type="number" pattern="[6-9]{1}[0-9]{9}" name="mobileNo" required>
 		<br><br>
 		
 		<input type="submit" value="Get Ticket">

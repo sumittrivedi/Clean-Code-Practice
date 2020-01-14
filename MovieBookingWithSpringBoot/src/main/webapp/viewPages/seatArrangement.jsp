@@ -3,47 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Seat Arrangement</title>
 <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-<style type="text/css">
-.main {
-	width: 850px;
-	height:1300px;
-	padding: 3%;
-}
 
-input[type="checkbox"] {
-	margin: 7px;
-	display: inline-block;
-	padding: 10px;
-	border: 1px solid black;
-	color: black;
-	background-color: white;
-	margin-bottom: 10px;
-}
-
-input[type="checkbox"]:checked {
-	border: 1px solid white;
-	color: white;
-	background-color: black;
-}
-
-input[type="checkbox"]:hover {
-	border: 1px solid white;
-	color: white;
-	background-color: black;
-}
-span{
-	display:inline-block;
-	margin :1%;
-}
-td{
-	text-align: center;
-}
-</style>
 
 <script type="text/javascript">
 	function checkSeatSelection(form) {
@@ -71,6 +36,7 @@ td{
 			<span>
 				<c:if test="${seatInfo.value}">
 					<table>
+					<th scope="row"></th>
 					  <tr><td><label for="seatInfos">${seatInfo.key.seatId}</label></td></tr>
 					  <tr><td><input type="checkbox" name="seatInfos"
 							value="${seatInfo.key.seatId} ${seatInfo.key.cost}"
@@ -80,6 +46,7 @@ td{
 				</c:if>
 				<c:if test="${not seatInfo.value}">
 					<table>
+					<th scope="row"></th>
 					  <tr><td><label for="seatInfos">${seatInfo.key.seatId}</label></td></tr>
 					  <tr><td><input type="checkbox" name="seatInfos"
 						value="${seatInfo.key.seatId} ${seatInfo.key.cost}"></td></tr>

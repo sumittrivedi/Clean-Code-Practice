@@ -26,7 +26,7 @@ class DateRestControllerTest {
 		int i =0;
 		RestAssured.baseURI = "http://localhost:8080/restDate";
 		RequestSpecification reqspec = RestAssured.given();
-		Response response= reqspec.get("?theatreChoice=PVR Cyberabad");
+		Response response= reqspec.get();
 		assertEquals("application/json", response.getContentType());
 		assertEquals(200, response.getStatusCode());
 		JsonPath jp = response.jsonPath();

@@ -2,6 +2,7 @@ package com.epam.moviebooking.webservices.restclient;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -15,7 +16,7 @@ public class SeatArrangementRestClient {
 	
 RestTemplate restTemplate = new RestTemplate();
 	
-	public ArrayList<HashMap<SeatArrangementDto, Boolean>> seatDetails(String theatreChoice,String dateChoice,String timeChoice)
+	public List<HashMap<SeatArrangementDto, Boolean>> seatDetails(String theatreChoice,String dateChoice,String timeChoice)
 	{
 		ResponseEntity<ArrayList<HashMap<SeatArrangementDto, Boolean>>> responseEntity = restTemplate
 				.exchange("http://localhost:8080/restSeatArrangement?theatreChoice="+theatreChoice+"&dateChoice="+dateChoice+"&timeChoice="+timeChoice, HttpMethod.GET, null,

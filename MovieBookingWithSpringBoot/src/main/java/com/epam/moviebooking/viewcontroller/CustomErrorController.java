@@ -2,14 +2,12 @@ package com.epam.moviebooking.viewcontroller;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class CustomErrorController implements ErrorController {
 	
-	private static final String PATH = "/error";
-	
-	@RequestMapping(value = PATH)
+	@GetMapping(value = "/error")
 	public String errorMsg()
 	{
 		return "error";
@@ -17,6 +15,6 @@ public class CustomErrorController implements ErrorController {
 
 	 @Override
 	    public String getErrorPath() {
-	        return PATH;
+	        return "/error";
 	    }
 }

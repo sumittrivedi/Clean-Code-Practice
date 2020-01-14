@@ -3,32 +3,47 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Location Details</title>
 <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-<style type="text/css">
-input {
-	width: 40%;
-}
-</style>
+
 </head>
 <body>
 	<div class="main">
 	<h1>Location Details</h1>
 	<hr>
-	
 	<form action="addLocation" method="post">
-		<input type="text" name="locationName" placeholder="location">
-		<input type="submit" value="Add Location">
+	<table class="table-design">
+	<th scope="row"></th>
+	<tr>
+		<td><input type="text" name="locationName" placeholder="location" required></td>
+		<td><input type="submit" value="Add Location"></td>
+	</tr>
+	
+	</table>
 	</form>
-	<table>
-		<tr><th>Location Id</th>	<th>Location Name</th> <th>Update</th>	<th>Delete</th></tr>
+	<table class="table-design">
+		<tr><th scope="row">Location Id</th>	<th scope="row">Location Name</th> </tr>
 	
 			<c:forEach var="location" items="${locationList}">
 			
-			<tr><td>${location.locationId}</td>	<td>${location.locationName}</td>	<td></td>	<td></td></tr>
+			<tr>
+			<form action="updateLocation" method="post">
+			<td><input type="text" name="locationId" placeholder="${location.locationId}" value="${location.locationId}" readonly="readonly"></td>	
+			<td><input type="text" name="locationName" placeholder="${location.locationName}" value="${location.locationName}"> </td>	
+			<td>
+			<input type="submit" value="Update">
+			</form>
+			</td> 
+			<td>
+			<form action="deleteLocation" method="post">
+				<input type="hidden" name="locationId" value="${location.locationId}"> 
+				<input type="submit" value="Delete">
+			</form>
+
+			</td></tr>
 				 
 			</c:forEach>
 			

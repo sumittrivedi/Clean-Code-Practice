@@ -1,5 +1,6 @@
 package com.epam.moviebooking.webservices.restcontroller;
 
+import java.security.GeneralSecurityException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +21,18 @@ public class LocationRestController {
 	@Autowired
 	private LocationService locationservice;
 	
+	
 	@GetMapping(value = "restLocation" , produces={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<List<LocationDto>> getLocation()
 	{
 		List<LocationDto> locationList = locationservice.getLocation();
-		return new ResponseEntity<List<LocationDto>>(locationList, HttpStatus.OK);
+		return new ResponseEntity<>(locationList, HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "restAddLocation" , produces={MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<String> addLocation(@RequestParam("locationName") String locationName)
+	public ResponseEntity<String> addLocation(@RequestParam("locationName") String locationName) throws GeneralSecurityException
 	{
 		locationservice.addLocation(locationName);
-		return new ResponseEntity<String>("Location Added successfully", HttpStatus.OK);
+		return new ResponseEntity<>("Location Added successfully", HttpStatus.OK);
 	}
 }

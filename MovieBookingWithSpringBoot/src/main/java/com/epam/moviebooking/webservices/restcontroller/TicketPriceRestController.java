@@ -18,8 +18,7 @@ public class TicketPriceRestController {
 	@GetMapping(value = "restTicketPrice", produces={MediaType.APPLICATION_JSON_VALUE})
 	public Double ticketPriceRestController(@RequestParam String seatInfos)
 	{
-		Double totalticketPrice = ticketPriceService.calculatePrice(seatInfos);
-		return totalticketPrice;
+		return ticketPriceService.calculatePrice(seatInfos);
 	}
 
 }

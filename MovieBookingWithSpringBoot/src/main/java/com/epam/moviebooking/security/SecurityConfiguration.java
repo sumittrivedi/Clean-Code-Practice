@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SuppressWarnings("deprecation")
 @Configuration
@@ -54,6 +56,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 		.invalidateHttpSession(true)
 		.clearAuthentication(true)
 		;
+	}
+	
+	public WebMvcConfigurer configure()
+	{
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/*").allowedOrigins("*");
+			}
+		};
 	}
 
 }

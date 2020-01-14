@@ -21,7 +21,7 @@ public class UserService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException 
 	{
 		Optional<UserDto> userDto = userRepository.findById(username);
-		if(userDto.isPresent() == false)
+		if(! userDto.isPresent())
 			throw new UsernameNotFoundException("UserName is incorrect");
 	
 		return new UserPrincipal(userDto.get());

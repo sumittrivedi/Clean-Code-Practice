@@ -1,16 +1,26 @@
 .main
 {
-	min-width:350px;
-	min-height:600px;
 	width:fit-content;
+	min-width:350px;
+	max-width: 850px;
 	height:fit-content;
+	min-height:600px;
 	border:2px solid black;
-	
-	background-color: #d9d9d9;
+	background-color: #F3F4EE;
 	border-radius:20px;
 	margin: auto;
 	margin-top: 150px;
 	padding: 10px;
+}
+.table-design
+{
+	width: 80%;
+}
+.table-design td
+{
+	margin: 7px;
+	min-width: 150px;
+	padding: 0%;
 }
 input,select
 {
@@ -19,7 +29,6 @@ input,select
 	border-radius:5px;
 	margin: 15px;
 }
-
 
 button
 {
@@ -47,14 +56,39 @@ img
 	width : 100%;
 }
 
-table
+table,table td
 {
 padding :5%;
 margin: 10px;
-text-align: center;
+align-content: center;
 }
 table th
 {
 padding : 5px;
 margin: 5px;
+}
+input[type="checkbox"] {
+	margin: 7px;
+	display: inline-block;
+	padding: 10px;
+	border: 1px solid black;
+	color: black;
+	background-color: white;
+	margin-bottom: 10px;
+}
+
+input[type="checkbox"]:checked {
+	border: 1px solid white;
+	color: #B6B5AD;
+}
+
+input[type="checkbox"]:hover {
+	border: 1px solid white;
+	color: white;
+}
+span{
+	display:inline-block;
+	margin:0.7%;
+	width:8%;
+	text-align:center;
 }

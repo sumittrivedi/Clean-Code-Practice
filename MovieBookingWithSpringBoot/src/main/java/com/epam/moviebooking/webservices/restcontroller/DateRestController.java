@@ -21,7 +21,7 @@ public class DateRestController {
 	public ResponseEntity<List<LocalDate>> getdate()
 	{
 		List<LocalDate> dateList = dateService.getDate();
-		return new ResponseEntity<List<LocalDate>>(dateList, HttpStatus.OK);
+		return new ResponseEntity<>(dateList, HttpStatus.OK);
 	}
 
 }

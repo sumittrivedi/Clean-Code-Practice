@@ -2,6 +2,7 @@ package com.epam.moviebooking.restcontroller;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 import javax.servlet.http.HttpSession;
 
@@ -35,10 +36,10 @@ class TicketPriceRestControllerTest {
 	{
 		RestAssured.baseURI = "http://localhost:8080/restTicketPrice";
 		RequestSpecification reqspec = RestAssured.given();
-		Response response= reqspec.get("/1/5");
+		Response response= reqspec.get("?seatInfos=A5+200.0");
+		when(ticketPriceService.calculatePrice("A5 200")).thenReturn(200.0);
 		assertEquals(200, response.getStatusCode());
-		assertEquals("application/json", response.getContentType());
-		
+		assertEquals(ticketPriceService.calculatePrice("A5 200"), 200.0);
 	}
 
 }

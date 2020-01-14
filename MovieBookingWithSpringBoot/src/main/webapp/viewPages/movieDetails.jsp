@@ -2,14 +2,14 @@
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Movie Details</title>
 <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 <style type="text/css">
-input {
-	width: 25%;
+.main {
+	max-width:fit-content;
 }
 </style>
 <style type="text/css">
@@ -20,22 +20,43 @@ input {
 	<h1>Movie Details</h1>
 	<hr>
 	
-	<form action="" method="post">
-		<input type="text" name="movieName" placeholder="movie name">
-		<input type="text" name="theatreId" placeholder="theatreId">
-		<input type="submit" value="Add Movie">
-	</form>
+	<form action="addMovie" method="post">
+	<table class="table-design">
+	<th scope="row"></th>
+	<tr>
+		<td><input type="text" name="movieName" placeholder="movie name" required></td>
+		<td><input type="number" name="theatreId" placeholder="theatreId" required></td>
+		<td><input type="submit" value="Add Movie"></td>
+	</tr>
 	
-	<table>
-		<tr><th>Movie Id</th>	<th>Movie Name</th> <th>Theatre Id</th>	<th>Update</th>	<th>Delete</th></tr>
+	</table>
+	</form>
+	<table class="table-design">
+		<tr><th scope="row">Movie Id</th>	<th scope="row">Movie Name</th> <th scope="row">Theatre Id</th>	</tr>
 	
 			<c:forEach var="movie" items="${movieList}">
 			
-			<tr><td>${movie.movieId}</td>	<td>${movie.movieName}</td>	<td>${movie.theatreId}</td>	<td></td> <td></td></tr>
+			<tr>
+			<form action="updateMovie" method="post">
+			<td><input type="text" name="movieId" placeholder="${movie.movieId}" value="${movie.movieId}" readonly="readonly"></td>	
+			<td><input type="text" name="movieName" placeholder="${movie.movieName}" value="${movie.movieName}"> </td>	
+			<td><input type="text" name="theatreId" placeholder="${movie.theatreId}" value="${movie.theatreId}"></td>
+			<td>
+			<input type="submit" value="Update">
+			</form>
+			</td> 
+			<td>
+			<form action="deleteMovie" method="post">
+				<input type="hidden" name="movieId" value="${movie.movieId}"> 
+				<input type="submit" value="Delete">
+			</form>
+
+			</td></tr>
 				 
 			</c:forEach>
 			
 	</table>
+	
 	</div>
 	
 </body>

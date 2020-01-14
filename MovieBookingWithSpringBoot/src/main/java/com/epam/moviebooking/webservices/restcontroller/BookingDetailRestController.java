@@ -1,5 +1,7 @@
 package com.epam.moviebooking.webservices.restcontroller;
 
+import java.security.NoSuchAlgorithmException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,9 +21,10 @@ public class BookingDetailRestController {
 	private TheatreService theatreService;
 	@Autowired
 	private ShowDetailsService showDetailsService;
+	
 		
 	@PostMapping(value = "restBookingDetail")
-	public TicketBookingDto saveBookingDetail(@RequestBody TicketBookingDto ticketBookingDto)
+	public TicketBookingDto saveBookingDetail(@RequestBody TicketBookingDto ticketBookingDto) throws NoSuchAlgorithmException
 	{	
 		TicketBookingDto dto = ticketBookingService.setTicketBookingDetails(ticketBookingDto);
 		int theatreId = theatreService.getTheatreId(dto.getTheatreName());	

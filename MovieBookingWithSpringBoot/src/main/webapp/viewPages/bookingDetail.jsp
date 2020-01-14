@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Booking Detail</title>
@@ -16,7 +16,7 @@ button {
 <body>
 	<div class="main">
 		<p>
-			Hey <strong>${cus_name}</strong>
+			Hey <strong>${cusName}</strong>
 		
 		<hr>
 		<br>
@@ -25,46 +25,46 @@ button {
 		<table>
 		
 			<tr>
-				<th>Booking Id</th>
+				<th scope="row">Booking Id</th>
 				<td><c:out value="${ticketDetails.bookingId}"></c:out></td>
 			</tr>
 
 			<tr>
-				<th>Location</th>
+				<th scope="row">Location</th>
 				<td><c:out value="${ticketDetails.locationName}"></c:out></td>
 			</tr>
 
 			<tr>
-				<th>Movie</th>
+				<th scope="row">Movie</th>
 				<td><c:out value="${ticketDetails.movieName}"></c:out></td>
 			</tr>
 
 			<tr>
-				<th>Theatre</th>
+				<th scope="row">Theatre</th>
 				<td><c:out value="${ticketDetails.theatreName}"></c:out></td>
 			</tr>
 			<tr>
-				<th>Date</th>
+				<th scope="row">Date</th>
 				<td><c:out value="${ticketDetails.date}"></c:out></td>
 			</tr>
 
 			<tr>
-				<th>Time</th>
+				<th scope="row">Time</th>
 				<td><c:out value="${ticketDetails.time}"></c:out></td>
 			</tr>
 
 			<tr>
-				<th>Seats</th>
+				<th scope="row">Seats</th>
 				<td><c:out value="${ticketDetails.seatIds}"></c:out></td>
 			</tr>
 			<tr>
-				<th>Total Price</th>
+				<th scope="row">Total Price</th>
 				<td><c:out value="${ticketDetails.price}"></c:out></td>
 			</tr>
 
 			<tr>
-				<th>Contact No</th>
-				<td><c:out value="${ticketDetails.customerName}"></c:out></td>
+				<th scope="row">Contact No</th>
+				<td><c:out value="${ticketDetails.mobileNo}"></c:out></td>
 			</tr>
 		</table>
 		<form action="logout">

@@ -12,7 +12,7 @@ public class DateService {
 	
 	public List<LocalDate> getDate()
 	{
-		List<LocalDate> dates = new ArrayList<LocalDate>();
+		List<LocalDate> dates = new ArrayList<>();
 		LocalDate currentDate = LocalDate.now();
 		for (int i=0; i<3 ; i++) {
 			dates.add(currentDate.plusDays(i));

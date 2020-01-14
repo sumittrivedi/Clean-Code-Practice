@@ -20,12 +20,12 @@ public class BookingDetailController {
 	private TicketBookingDto ticketBookingDto;
 	
 	@PostMapping("bookingDetail")
-	public ModelAndView setBookingDetail(@RequestParam String cus_name, @RequestParam String contact_no, HttpSession session)
+	public ModelAndView setBookingDetail(@RequestParam String customerName, @RequestParam String mobileNo, HttpSession session)
 	{
 		
 		ModelAndView mv = new ModelAndView();
-		session.setAttribute("cus_name", cus_name);
-		session.setAttribute("contact_no", contact_no);
+		session.setAttribute("customerName", customerName);
+		session.setAttribute("mobileNo", mobileNo);
 		String locationChoice = (String) session.getAttribute("locationChoice"); 
 		String movieChoice = (String) session.getAttribute("movieChoice");
 		String theatreChoice = (String) session.getAttribute("theatreChoice");
@@ -41,8 +41,8 @@ public class BookingDetailController {
 		ticketBookingDto.setTime(timeChoice);
 		ticketBookingDto.setSeatIds(seatIds);
 		ticketBookingDto.setPrice(totalticketPrice);
-		ticketBookingDto.setCustomerName(cus_name);
-		ticketBookingDto.setMobileNo(contact_no);
+		ticketBookingDto.setCustomerName(customerName);
+		ticketBookingDto.setMobileNo(mobileNo);
 		
 		TicketBookingDto ticketDetails = bookingDetailRestClient.setTicketBookingDetails(ticketBookingDto);
 		mv.addObject("ticketDetails", ticketDetails);

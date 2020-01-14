@@ -22,13 +22,13 @@ public class MovieRestController {
 	public ResponseEntity<List<MovieDto>> getMovie(@RequestParam("locationChoice") String locationChoice)
 	{
 		List<MovieDto> movieList = movieService.movieByLocation(locationChoice);
-		return new ResponseEntity<List<MovieDto>>(movieList, HttpStatus.OK);
+		return new ResponseEntity<>(movieList, HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "restMovieDetails", produces={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<List<MovieDto>> movieDetails()
 	{
 		List<MovieDto> movieList = movieService.findAll();
-		return new ResponseEntity<List<MovieDto>>(movieList, HttpStatus.OK);
+		return new ResponseEntity<>(movieList, HttpStatus.OK);
 	}
 }

@@ -22,15 +22,14 @@ class BookingDetailsRestControllerTest {
 		jsonObj.put("theatreName", "PVR Newtown");
 		jsonObj.put("date", "2019-12-02");
 		jsonObj.put( "time", "08:00:00");
-		jsonObj.put("premiumSeats",1 );
-		jsonObj.put("executiveSeats", 2 );
-		jsonObj.put("price", 350.0 );
+		jsonObj.put( "seatIds", "A1 B2");
+		jsonObj.put( "totalticketPrice", 400.0);
 		jsonObj.put("customerName", "Sumit" );
-		jsonObj.put("mobileNo", "1254125412");
+		jsonObj.put("mobileNo", "9998585452");
 		reqspec.header("Content-Type", "application/json");
 		reqspec.body(jsonObj.toString());
 		Response response = reqspec.post("/restBookingDetail");
-		assertEquals(response.getStatusCode(), 200);
+		assertEquals(200,response.getStatusCode());
 		assertEquals("application/json", response.getContentType());
 	}
 

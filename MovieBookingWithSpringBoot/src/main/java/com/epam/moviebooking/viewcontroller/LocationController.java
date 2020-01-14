@@ -1,11 +1,12 @@
 package com.epam.moviebooking.viewcontroller;
 
+import java.security.GeneralSecurityException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,8 +21,10 @@ public class LocationController {
 	private LocationRestclient locationRestclient;
 	@Autowired
 	private LocationService locationService;
+	@Autowired
+	private AdminController adminController;
 	
-	@RequestMapping(value = "location")
+	@GetMapping(value = "location")
 	public ModelAndView getLocation()
 	{
 		List<LocationDto> locationList = locationRestclient.getLocation();
@@ -31,18 +34,25 @@ public class LocationController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "addLocationInput")
-	public String addLocationInput()
+	@PostMapping(value = "addLocation")
+	public ModelAndView addLocation(@RequestParam String locationName) throws GeneralSecurityException
 	{
-		return "addLocation";
+		locationService.addLocation(locationName);
+		return adminController.locationDetails();
+	}
+	@PostMapping(value = "deleteLocation")
+	public ModelAndView deleteLocation(@RequestParam int locationId)
+	{
+		locationService.deleteLocation(locationId);
+		return adminController.locationDetails();
 	}
 	
-	@PostMapping(value = "addLocation")
-	public ModelAndView addLocation(@RequestParam String locationName)
+	@PostMapping(value = "updateLocation")
+	public ModelAndView updateLocation(@RequestParam int locationId,@RequestParam String locationName)
 	{
-		ModelAndView mv = new ModelAndView();
-		locationService.addLocation(locationName);
-		mv.setViewName("adminHome");
+		locationService.updateLocation(locationId,locationName);
+		ModelAndView mv = adminController.locationDetails();
 		return mv;
 	}
 }
+

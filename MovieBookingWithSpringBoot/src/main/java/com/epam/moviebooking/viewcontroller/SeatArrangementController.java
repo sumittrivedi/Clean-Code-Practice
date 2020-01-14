@@ -5,7 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,8 +21,8 @@ public class SeatArrangementController {
 	@Autowired
 	private TheatreService theatreService;
 	
-	@RequestMapping(value = "seatArrangement")
-	public ModelAndView seatAvailability(@RequestParam String timeChoice,HttpSession session)
+	@GetMapping(value = "seatArrangement")
+	public ModelAndView seatArrangement(@RequestParam String timeChoice,HttpSession session)
 	{
 		ModelAndView mv = new ModelAndView();
 		session.setAttribute("timeChoice", timeChoice);
