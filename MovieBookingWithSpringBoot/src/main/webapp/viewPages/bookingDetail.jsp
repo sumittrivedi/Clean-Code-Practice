@@ -16,7 +16,7 @@ button {
 <body>
 	<div class="main">
 		<p>
-			Hey <strong>${cusName}</strong>
+			Hey <strong>${customerName}</strong>
 		
 		<hr>
 		<br>
