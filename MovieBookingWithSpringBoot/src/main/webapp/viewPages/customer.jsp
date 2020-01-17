@@ -21,7 +21,7 @@
 		<br><br>
 		
 		<label>Mobile Number</label> 
-		<input type="number" pattern="[6-9]{1}[0-9]{9}" name="mobileNo" required>
+		<input type="text" pattern="^[6-9]{1}[0-9]{9}$" name="mobileNo" required>
 		<br><br>
 		
 		<input type="submit" value="Get Ticket">

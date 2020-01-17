@@ -8,8 +8,8 @@ import java.util.TreeMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.epam.moviebooking.dto.SeatArrangementDto;
-import com.epam.moviebooking.dto.SeatInfoDto;
+import com.epam.moviebooking.entity.SeatArrangementEntity;
+import com.epam.moviebooking.entity.SeatInfoEntity;
 import com.epam.moviebooking.repository.SeatArrangementRepository;
 import com.epam.moviebooking.repository.TickettypeDetailsRepository;
 
@@ -23,20 +23,20 @@ public class SeatArrangementService {
 	@Autowired
 	private TickettypeDetailsRepository tickettypeDetailsRepository;
 
-	public SortedMap<SeatInfoDto, Boolean> getSeatDetails(int theatreId, String date, String time) {
+	public SortedMap<SeatInfoEntity, Boolean> getSeatDetails(int theatreId, String date, String time) {
 
-		List<SeatArrangementDto> arr = (List<SeatArrangementDto>) seatArrangementRepository.findAll();
-		SortedMap<SeatInfoDto, Boolean> seatDetails = new TreeMap<>();
+		List<SeatArrangementEntity> arr = (List<SeatArrangementEntity>) seatArrangementRepository.findAll();
+		SortedMap<SeatInfoEntity, Boolean> seatDetails = new TreeMap<>();
 		String bookedSeats = showDetailsService.getBookedSeats(theatreId, date, time);
 		Optional<String> bookedSeatsOptional = Optional.ofNullable(bookedSeats);
 
-		for (SeatArrangementDto seatArrangementDto : arr)
+		for (SeatArrangementEntity seatArrangementDto : arr)
 		{
 			Double seatRowCost = tickettypeDetailsRepository.getSeatCost(seatArrangementDto.getRowId());
 			
 			for (int i = 0; i < seatArrangementDto.getNumberOfSeats(); i++) 
 			{
-				SeatInfoDto seatInfoDto = new SeatInfoDto();
+				SeatInfoEntity seatInfoDto = new SeatInfoEntity();
 				seatInfoDto.setSeatId(seatArrangementDto.getRowId().concat(String.valueOf(i)));
 				seatInfoDto.setSeatCategory(seatArrangementDto.getSeatCategory());
 				seatInfoDto.setCost(seatRowCost);

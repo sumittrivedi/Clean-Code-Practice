@@ -15,14 +15,17 @@ button {
 </head>
 <body>
 	<div class="main">
-		<p>
-			Hey <strong>${cusName}</strong>
+	
+		<h1>Movie Booking System</h1>
 		
 		<hr>
+		
+		<br> 
+		<p>Hey <strong>${customerName}</strong>
 		<br>
-		<br> Here is your ticket details<br>
 		<br>
 		<table>
+		<caption>Your Ticket</caption>
 		
 			<tr>
 				<th scope="row">Booking Id</th>

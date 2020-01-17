@@ -12,7 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.epam.moviebooking.dto.LocationDto;
+import com.epam.moviebooking.entity.LocationEntity;
 import com.epam.moviebooking.repository.LocationRepository;
 
 
@@ -32,14 +32,14 @@ class LocationServiceTest {
 	@Test
 	void getLocation() 
 	{
-		List<LocationDto> locationDtoList = new ArrayList<LocationDto>();
-		LocationDto obj1 = new LocationDto(1, "Hyderabad");
-		LocationDto obj2 = new LocationDto(2, "Kolkata");
-		LocationDto obj3 = new LocationDto(3, "Chennai");
-		LocationDto obj4 = new LocationDto(4, "Patna");
-		LocationDto obj5 = new LocationDto(5, "Delhi");
-		LocationDto obj6 = new LocationDto(6, "Pune");
-		LocationDto obj7 = new LocationDto(7, "Banglore");
+		List<LocationEntity> locationDtoList = new ArrayList<LocationEntity>();
+		LocationEntity obj1 = new LocationEntity(1, "Hyderabad");
+		LocationEntity obj2 = new LocationEntity(2, "Kolkata");
+		LocationEntity obj3 = new LocationEntity(3, "Chennai");
+		LocationEntity obj4 = new LocationEntity(4, "Patna");
+		LocationEntity obj5 = new LocationEntity(5, "Delhi");
+		LocationEntity obj6 = new LocationEntity(6, "Pune");
+		LocationEntity obj7 = new LocationEntity(7, "Banglore");
 		
 		locationDtoList.add(obj1);
 		locationDtoList.add(obj2);
@@ -50,7 +50,7 @@ class LocationServiceTest {
 		locationDtoList.add(obj7);
 		
 		
-		when((List<LocationDto>)locationRepository.findAll()).thenReturn(locationDtoList);
+		when((List<LocationEntity>)locationRepository.findAll()).thenReturn(locationDtoList);
 		assertEquals(locationRepository.findAll(), locationDtoList);
 	}
 

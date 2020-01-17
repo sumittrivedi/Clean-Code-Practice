@@ -11,7 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.epam.moviebooking.dto.TicketBookingDto;
+import com.epam.moviebooking.entity.TicketBookingEntity;
 import com.epam.moviebooking.repository.TicketBookingRepository;
 
 class TicketPriceServiceTest {
@@ -19,7 +19,7 @@ class TicketPriceServiceTest {
 	@Mock
 	private TicketBookingRepository ticketBookingRepository;
 	@Mock
-	private TicketBookingDto dto;
+	private TicketBookingEntity dto;
 	
 	@InjectMocks
 	private TicketBookingService ticketBookingService;

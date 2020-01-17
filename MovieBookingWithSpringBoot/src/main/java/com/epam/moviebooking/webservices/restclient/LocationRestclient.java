@@ -8,18 +8,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.epam.moviebooking.dto.LocationDto;
+import com.epam.moviebooking.entity.LocationEntity;
 
 @Service
 public class LocationRestclient {
 
 	RestTemplate restTemplate = new RestTemplate();
 
-	public List<LocationDto> getLocation() 
+	public List<LocationEntity> getLocation() 
 	{
-		ResponseEntity<List<LocationDto>> locationResponseEntity = restTemplate
+		ResponseEntity<List<LocationEntity>> locationResponseEntity = restTemplate
 				.exchange("http://localhost:8080/restLocation", HttpMethod.GET, null,
-				new ParameterizedTypeReference<List<LocationDto>>(){});
+				new ParameterizedTypeReference<List<LocationEntity>>(){});
 		return locationResponseEntity.getBody();
 	}
 	

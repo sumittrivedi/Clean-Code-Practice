@@ -9,24 +9,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.epam.moviebooking.dto.TimeDto;
+import com.epam.moviebooking.entity.TimeEntity;
 
 @Service
 public class TimeRestClient 
 {
 	RestTemplate restTemplate = new RestTemplate();
 	
-	public List<TimeDto> getTime(LocalDate date)
+	public List<TimeEntity> getTime(LocalDate date)
 	{
-		ResponseEntity<List<TimeDto>> timeDtoResEntity = restTemplate
-				.exchange("http://localhost:8080/restTime?dateChoice="+date, HttpMethod.GET, null, new ParameterizedTypeReference<List<TimeDto>>(){});
+		ResponseEntity<List<TimeEntity>> timeDtoResEntity = restTemplate
+				.exchange("http://localhost:8080/restTime?dateChoice="+date, HttpMethod.GET, null, new ParameterizedTypeReference<List<TimeEntity>>(){});
 		return timeDtoResEntity.getBody();
 	}
 	
-	public List<TimeDto> timeDetails()
+	public List<TimeEntity> timeDetails()
 	{
-		ResponseEntity<List<TimeDto>> timeDtoResEntity = restTemplate
-				.exchange("http://localhost:8080/restTimeDetails", HttpMethod.GET, null, new ParameterizedTypeReference<List<TimeDto>>(){});
+		ResponseEntity<List<TimeEntity>> timeDtoResEntity = restTemplate
+				.exchange("http://localhost:8080/restTimeDetails", HttpMethod.GET, null, new ParameterizedTypeReference<List<TimeEntity>>(){});
 		return timeDtoResEntity.getBody();
 	}
 }

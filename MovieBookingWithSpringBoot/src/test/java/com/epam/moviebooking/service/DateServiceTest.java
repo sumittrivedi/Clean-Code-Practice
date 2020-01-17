@@ -15,7 +15,7 @@ import org.mockito.MockitoAnnotations;
 class DateServiceTest {
 	
 	@InjectMocks
-	DateService dateService;
+	private DateService dateService;
 	
 	@BeforeEach
 	public void init()

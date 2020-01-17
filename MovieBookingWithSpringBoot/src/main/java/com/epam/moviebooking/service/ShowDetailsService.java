@@ -5,38 +5,36 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.epam.moviebooking.dto.ShowDetailsDto;
+import com.epam.moviebooking.entity.ShowDetailsEntity;
 import com.epam.moviebooking.repository.ShowDetailsRepository;
 
 @Service
 public class ShowDetailsService {
 	
 	@Autowired
-	private ShowDetailsService showDetailsService;
-	@Autowired
 	private ShowDetailsRepository showDetailsRepository;
 	@Autowired
-	private Optional<ShowDetailsDto> showDetailsOptional;
+	private Optional<ShowDetailsEntity> showDetailsOptional;
 	@Autowired
-	private ShowDetailsDto showDetailsDto;
+	private ShowDetailsEntity showDetailsEntity;
 	
 	public int getShowId(int theatreId,String date,String time)
 	{	
 		showDetailsOptional = showDetailsRepository.findByTheatreIdAndDateAndTime(theatreId,date,time);
 		if(! showDetailsOptional.isPresent())
 		{
-			showDetailsDto.setTheatreId(theatreId);
-			showDetailsDto.setDate(date);
-			showDetailsDto.setTime(time);
-			showDetailsService.setShowId(showDetailsDto);
+			showDetailsEntity.setTheatreId(theatreId);
+			showDetailsEntity.setDate(date);
+			showDetailsEntity.setTime(time);
+			this.setShowId(showDetailsEntity);
 			showDetailsOptional = showDetailsRepository.findByTheatreIdAndDateAndTime(theatreId,date,time);
 		}
 		if(showDetailsOptional.isPresent())
-			showDetailsDto = showDetailsOptional.get();
-		return showDetailsDto.getShowId();
+			showDetailsEntity = showDetailsOptional.get();
+		return showDetailsEntity.getShowId();
 	}
 	
-	private void setShowId(ShowDetailsDto showDetailsDto)
+	private void setShowId(ShowDetailsEntity showDetailsDto)
 	{
 		showDetailsRepository.save(showDetailsDto);
 	}
@@ -53,11 +51,11 @@ public class ShowDetailsService {
 	public void updateBookedSeats(int theatreId,String date,String time,String selectedSeats)
 	{
 		StringBuilder seatIds = new StringBuilder(selectedSeats);
-		String bookedSeats = showDetailsService.getBookedSeats(theatreId, date, time);
+		String bookedSeats = this.getBookedSeats(theatreId, date, time);
 		Optional<String> bookedSeatsOptional = Optional.ofNullable(bookedSeats);
 		if (bookedSeatsOptional.isPresent()) 
 		{
-			Optional<ShowDetailsDto> dto = showDetailsRepository.findByTheatreIdAndDateAndTime(theatreId, date, time);
+			Optional<ShowDetailsEntity> dto = showDetailsRepository.findByTheatreIdAndDateAndTime(theatreId, date, time);
 			seatIds.append(bookedSeats);
 			if (dto.isPresent())
 			{
@@ -68,11 +66,11 @@ public class ShowDetailsService {
 		}
 		else
 		{
-			showDetailsDto.setTheatreId(theatreId);
-			showDetailsDto.setDate(date);
-			showDetailsDto.setTime(time);
-			showDetailsDto.setBookedSeats(seatIds.toString());
-			showDetailsRepository.save(showDetailsDto);
+			showDetailsEntity.setTheatreId(theatreId);
+			showDetailsEntity.setDate(date);
+			showDetailsEntity.setTime(time);
+			showDetailsEntity.setBookedSeats(seatIds.toString());
+			showDetailsRepository.save(showDetailsEntity);
 		}
 	}
 }

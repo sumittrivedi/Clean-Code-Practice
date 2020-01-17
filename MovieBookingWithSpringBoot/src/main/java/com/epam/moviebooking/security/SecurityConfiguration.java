@@ -26,10 +26,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
         this.authenticationSuccessHandler = authenticationSuccessHandler;
     }
 	
-	
 	@Autowired
 	private UserDetailsService userDetailsService;
-	
 	
 	@Bean
 	public AuthenticationProvider autProvider() {

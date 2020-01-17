@@ -8,26 +8,26 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.epam.moviebooking.dto.MovieDto;
+import com.epam.moviebooking.entity.MovieEntity;
 
 @Service
 public class MovieRestClient 
 {
 	RestTemplate restTemplate = new RestTemplate();
 	
-	public List<MovieDto> movieByLocation(String locationChoice)
+	public List<MovieEntity> movieByLocation(String locationChoice)
 	{
-		ResponseEntity<List<MovieDto>> locationResponseEntity = restTemplate
+		ResponseEntity<List<MovieEntity>> locationResponseEntity = restTemplate
 				.exchange("http://localhost:8080/restMovie?locationChoice="+locationChoice, HttpMethod.GET, null,
-				new ParameterizedTypeReference<List<MovieDto>>(){});
+				new ParameterizedTypeReference<List<MovieEntity>>(){});
 		return locationResponseEntity.getBody();
 	}
 	
-	public List<MovieDto> movieDetails()
+	public List<MovieEntity> movieDetails()
 	{
-		ResponseEntity<List<MovieDto>> locationResponseEntity = restTemplate
+		ResponseEntity<List<MovieEntity>> locationResponseEntity = restTemplate
 				.exchange("http://localhost:8080/restMovieDetails", HttpMethod.GET, null,
-				new ParameterizedTypeReference<List<MovieDto>>(){});
+				new ParameterizedTypeReference<List<MovieEntity>>(){});
 		return locationResponseEntity.getBody();
 	}
 }

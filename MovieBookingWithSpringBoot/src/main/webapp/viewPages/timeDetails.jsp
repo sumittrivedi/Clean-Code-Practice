@@ -21,6 +21,7 @@
 	
 	<form action="addTime" method="post">
 	<table class="table-design">
+	<th scope="row"></th>
 	<tr>
 		<td><input type="time" name="time" placeholder="time" required></td>
 		<td><input type="submit" value="Add Time"></td>
@@ -29,6 +30,7 @@
 	</table>
 	</form>
 	<table class="table-design">
+	<caption></caption>
 		<tr><th scope="row">Time Id</th>	<th scope="row">Time</th> </tr>
 	
 			<c:forEach var="time" items="${timeList}">

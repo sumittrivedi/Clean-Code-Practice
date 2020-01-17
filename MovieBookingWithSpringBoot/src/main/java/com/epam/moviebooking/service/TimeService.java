@@ -1,17 +1,14 @@
 package com.epam.moviebooking.service;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.epam.moviebooking.dto.TimeDto;
+import com.epam.moviebooking.entity.TimeEntity;
 import com.epam.moviebooking.repository.TimeRepository;
 
 @Service
@@ -20,34 +17,31 @@ public class TimeService {
 	@Autowired
 	private TimeRepository timeRepository;
 	@Autowired
-	private Optional<TimeDto> timeDtoOptional;
+	private Optional<TimeEntity> timeDtoOptional;
 	@Autowired 
-	private TimeDto timeDto;
+	private TimeEntity timeDto;
 	
-	public List<TimeDto> getTime(LocalDate dateChoice)
+	public List<TimeEntity> getTime(LocalDate dateChoice)
 	{
-		List<TimeDto> timeDtoList1 = (List<TimeDto>) timeRepository.findAll();
-		List<TimeDto> timeDtoList = (List<TimeDto>) timeRepository.findAll();
+		List<TimeEntity> dummyTimeList = (List<TimeEntity>) timeRepository.findAll();
+		List<TimeEntity> timeDtoList = (List<TimeEntity>) timeRepository.findAll();
 		if (dateChoice.compareTo(LocalDate.now()) == 0)
-			for (TimeDto time : timeDtoList) 
+			for (TimeEntity time : timeDtoList) 
 			{
 				int timeDifference = time.getTime().compareTo(LocalTime.now());
 				if(timeDifference < 0)
-					timeDtoList1.remove(time);
+					dummyTimeList.remove(time);
 			}
-			return timeDtoList1;
+			return dummyTimeList;
 	}
 	
-	public List<TimeDto> timeDetails()
+	public List<TimeEntity> timeDetails()
 	{
-		return (List<TimeDto>) timeRepository.findAll();
+		return (List<TimeEntity>) timeRepository.findAll();
 	}
-	public void addTime(String time) throws NoSuchAlgorithmException
+	public void addTime(String time) 
 	{
 		LocalTime localTime = LocalTime.parse(time);
-		Random random = SecureRandom.getInstanceStrong();
-		int timeId = random.nextInt();
-		timeDto.setTimeId(timeId);
 		timeDto.setTime(localTime);
 		timeRepository.save(timeDto);
 	}

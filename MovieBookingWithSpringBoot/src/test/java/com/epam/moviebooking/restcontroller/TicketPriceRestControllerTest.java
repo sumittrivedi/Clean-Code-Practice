@@ -39,7 +39,7 @@ class TicketPriceRestControllerTest {
 		Response response= reqspec.get("?seatInfos=A5+200.0");
 		when(ticketPriceService.calculatePrice("A5 200")).thenReturn(200.0);
 		assertEquals(200, response.getStatusCode());
-		assertEquals(ticketPriceService.calculatePrice("A5 200"), 200.0);
+		assertEquals(200.0,ticketPriceService.calculatePrice("A5 200"));
 	}
 
 }

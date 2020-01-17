@@ -16,6 +16,7 @@
 	<hr>
 	<form action="addLocation" method="post">
 	<table class="table-design">
+	<caption>Location Details</caption>
 	<th scope="row"></th>
 	<tr>
 		<td><input type="text" name="locationName" placeholder="location" required></td>
@@ -25,6 +26,7 @@
 	</table>
 	</form>
 	<table class="table-design">
+	<caption></caption>
 		<tr><th scope="row">Location Id</th>	<th scope="row">Location Name</th> </tr>
 	
 			<c:forEach var="location" items="${locationList}">

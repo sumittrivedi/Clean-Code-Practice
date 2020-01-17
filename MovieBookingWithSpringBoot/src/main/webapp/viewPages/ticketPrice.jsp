@@ -11,10 +11,11 @@
 <body>
 	<div class="main">
 		
-		<p>Your choices
+		<h1>Movie Booking System</h1>
 		<hr>
 		<br>
 		<table>
+			<caption>Your have chosen</caption>
 			<tr>
 				<th scope="row">Location</th>
 				<td><c:out value="${locationChoice}"></c:out></td>

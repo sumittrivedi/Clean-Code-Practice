@@ -9,18 +9,19 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import com.epam.moviebooking.dto.SeatArrangementDto;
+
+import com.epam.moviebooking.entity.SeatArrangementEntity;
 
 @Service
 public class SeatArrangementRestClient {
 	
 RestTemplate restTemplate = new RestTemplate();
 	
-	public List<HashMap<SeatArrangementDto, Boolean>> seatDetails(String theatreChoice,String dateChoice,String timeChoice)
+	public List<HashMap<SeatArrangementEntity, Boolean>> seatDetails(String theatreChoice,String dateChoice,String timeChoice)
 	{
-		ResponseEntity<ArrayList<HashMap<SeatArrangementDto, Boolean>>> responseEntity = restTemplate
+		ResponseEntity<ArrayList<HashMap<SeatArrangementEntity, Boolean>>> responseEntity = restTemplate
 				.exchange("http://localhost:8080/restSeatArrangement?theatreChoice="+theatreChoice+"&dateChoice="+dateChoice+"&timeChoice="+timeChoice, HttpMethod.GET, null,
-				new ParameterizedTypeReference<ArrayList<HashMap<SeatArrangementDto, Boolean>>>(){});
+				new ParameterizedTypeReference<ArrayList<HashMap<SeatArrangementEntity, Boolean>>>(){});
 		return responseEntity.getBody();
 	}
 

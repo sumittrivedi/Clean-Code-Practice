@@ -56,17 +56,13 @@ img
 	width : 100%;
 }
 
-table,table td
+table,td,th
 {
 padding :5%;
 margin: 10px;
 align-content: center;
 }
-table th
-{
-padding : 5px;
-margin: 5px;
-}
+
 input[type="checkbox"] {
 	margin: 7px;
 	display: inline-block;
@@ -91,4 +87,7 @@ span{
 	margin:0.7%;
 	width:8%;
 	text-align:center;
+}
+caption {
+	font-weight: bold;
 }

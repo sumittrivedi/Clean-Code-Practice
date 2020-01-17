@@ -1,6 +1,5 @@
 package com.epam.moviebooking.viewcontroller;
 
-import java.security.GeneralSecurityException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.epam.moviebooking.dto.LocationDto;
+import com.epam.moviebooking.entity.LocationEntity;
 import com.epam.moviebooking.service.LocationService;
 import com.epam.moviebooking.webservices.restclient.LocationRestclient;
 
@@ -27,7 +26,7 @@ public class LocationController {
 	@GetMapping(value = "location")
 	public ModelAndView getLocation()
 	{
-		List<LocationDto> locationList = locationRestclient.getLocation();
+		List<LocationEntity> locationList = locationRestclient.getLocation();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("locationList", locationList);
 		mv.setViewName("location");
@@ -35,7 +34,7 @@ public class LocationController {
 	}
 	
 	@PostMapping(value = "addLocation")
-	public ModelAndView addLocation(@RequestParam String locationName) throws GeneralSecurityException
+	public ModelAndView addLocation(@RequestParam String locationName)
 	{
 		locationService.addLocation(locationName);
 		return adminController.locationDetails();
@@ -51,8 +50,7 @@ public class LocationController {
 	public ModelAndView updateLocation(@RequestParam int locationId,@RequestParam String locationName)
 	{
 		locationService.updateLocation(locationId,locationName);
-		ModelAndView mv = adminController.locationDetails();
-		return mv;
+		return adminController.locationDetails();
 	}
 }
 

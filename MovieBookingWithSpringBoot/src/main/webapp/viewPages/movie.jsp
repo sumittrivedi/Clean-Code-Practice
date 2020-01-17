@@ -1,4 +1,4 @@
-<%@page import="com.epam.moviebooking.dto.MovieDto"%>
+<%@page import="com.epam.moviebooking.entity.MovieEntity"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" isELIgnored="false"%>

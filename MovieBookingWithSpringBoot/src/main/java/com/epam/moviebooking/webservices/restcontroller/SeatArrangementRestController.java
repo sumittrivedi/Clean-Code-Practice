@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.epam.moviebooking.dto.SeatInfoDto;
+import com.epam.moviebooking.entity.SeatInfoEntity;
 import com.epam.moviebooking.service.SeatArrangementService;
 import com.epam.moviebooking.service.TheatreService;
 
@@ -24,11 +24,11 @@ public class SeatArrangementRestController {
 	TheatreService theatreService;
 	
 	@GetMapping(value = "restSeatArrangement", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<SortedMap<SeatInfoDto, Boolean>> seatArrangement(@RequestParam String theatreChoice,@RequestParam String dateChoice,@RequestParam String timeChoice)
+	public ResponseEntity<SortedMap<SeatInfoEntity, Boolean>> seatArrangement(@RequestParam String theatreChoice,@RequestParam String dateChoice,@RequestParam String timeChoice)
 	{
 		int theatreId = theatreService.getTheatreId(theatreChoice);
-		SortedMap<SeatInfoDto, Boolean> seatDetails = seatArrangementService.getSeatDetails(theatreId, dateChoice, timeChoice);
-		return new ResponseEntity<SortedMap<SeatInfoDto,Boolean>>(seatDetails, HttpStatus.OK);
+		SortedMap<SeatInfoEntity, Boolean> seatDetails = seatArrangementService.getSeatDetails(theatreId, dateChoice, timeChoice);
+		return new ResponseEntity<>(seatDetails, HttpStatus.OK);
 	}
 	
 	

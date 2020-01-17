@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.epam.moviebooking.dto.TicketBookingDto;
+import com.epam.moviebooking.entity.TicketBookingEntity;
 import com.epam.moviebooking.webservices.restclient.BookingDetailRestClient;
 
 @Controller
@@ -17,7 +17,7 @@ public class BookingDetailController {
 	@Autowired
 	private BookingDetailRestClient bookingDetailRestClient;
 	@Autowired
-	private TicketBookingDto ticketBookingDto;
+	private TicketBookingEntity ticketBookingDto;
 	
 	@PostMapping("bookingDetail")
 	public ModelAndView setBookingDetail(@RequestParam String customerName, @RequestParam String mobileNo, HttpSession session)
@@ -44,7 +44,7 @@ public class BookingDetailController {
 		ticketBookingDto.setCustomerName(customerName);
 		ticketBookingDto.setMobileNo(mobileNo);
 		
-		TicketBookingDto ticketDetails = bookingDetailRestClient.setTicketBookingDetails(ticketBookingDto);
+		TicketBookingEntity ticketDetails = bookingDetailRestClient.setTicketBookingDetails(ticketBookingDto);
 		mv.addObject("ticketDetails", ticketDetails);
 		mv.setViewName("bookingDetail");
 		return mv;

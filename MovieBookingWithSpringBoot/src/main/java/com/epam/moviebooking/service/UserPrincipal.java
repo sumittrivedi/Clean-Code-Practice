@@ -7,36 +7,36 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.epam.moviebooking.dto.UserDto;
+import com.epam.moviebooking.entity.UserEntity;
 
 public class UserPrincipal implements UserDetails {
 	
 	
 	private static final long serialVersionUID = 1L;
-	private UserDto userDto;
+	private UserEntity userEntity;
 
-	public UserPrincipal(UserDto userDto) {
+	public UserPrincipal(UserEntity userDto) {
 		super();
-		this.userDto = userDto;
+		this.userEntity = userDto;
 	}
 
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		
-		return Collections.singleton(new SimpleGrantedAuthority(userDto.getRole()));
+		return Collections.singleton(new SimpleGrantedAuthority(userEntity.getRole()));
 	}
 
 	@Override
 	public String getPassword() {
 		
-		return userDto.getPassword();
+		return userEntity.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
 		
-		return userDto.getUsername();
+		return userEntity.getUsername();
 	}
 
 	

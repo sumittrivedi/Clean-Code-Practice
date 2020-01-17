@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.epam.moviebooking.dto.TimeDto;
+import com.epam.moviebooking.entity.TimeEntity;
 import com.epam.moviebooking.service.TimeService;
 
 @RestController
@@ -21,17 +21,17 @@ public class TimeRestController {
 	private TimeService timeService;
 	
 	@GetMapping(value = "restTime",produces = {MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<List<TimeDto>> getTime(@RequestParam String dateChoice)
+	public ResponseEntity<List<TimeEntity>> getTime(@RequestParam String dateChoice)
 	{
 		LocalDate date = LocalDate.parse(dateChoice);
-		List<TimeDto> timeList = timeService.getTime(date);
+		List<TimeEntity> timeList = timeService.getTime(date);
 		return new ResponseEntity<>(timeList, HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "restTimeDetails",produces = {MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<List<TimeDto>> timeDetails()
+	public ResponseEntity<List<TimeEntity>> timeDetails()
 	{
-		List<TimeDto> timeList = timeService.timeDetails();
+		List<TimeEntity> timeList = timeService.timeDetails();
 		return new ResponseEntity<>(timeList, HttpStatus.OK);
 	}
 }

@@ -1,15 +1,12 @@
 package com.epam.moviebooking.service;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.epam.moviebooking.dto.MovieDto;
+import com.epam.moviebooking.entity.MovieEntity;
 import com.epam.moviebooking.repository.MovieRepository;
 
 @Service
@@ -18,34 +15,31 @@ public class MovieService {
 	@Autowired
 	private MovieRepository movieRepository;
 	@Autowired
-	private Optional<MovieDto> movieDtoOptional;
+	private Optional<MovieEntity> movieEntityOptional;
 	
-	public List<MovieDto> movieByLocation(String locationChoice)
+	public List<MovieEntity> movieByLocation(String locationChoice)
 	{
 		return movieRepository.movieByLocation(locationChoice);
 	}
-	public List<MovieDto> findAll()
+	public List<MovieEntity> findAll()
 	{
-		return (List<MovieDto>) movieRepository.findAll();
+		return (List<MovieEntity>) movieRepository.findAll();
 	}
 	
-	public void addMovie(String movieName, int theatreId) throws NoSuchAlgorithmException
+	public void addMovie(String movieName, int theatreId) 
 	{
-		MovieDto movieDto = new MovieDto();
-		Random random = SecureRandom.getInstanceStrong();
-		int movieId = random.nextInt();
-		movieDto.setMovieId(movieId);
+		MovieEntity movieDto = new MovieEntity();
 		movieDto.setMovieName(movieName);
 		movieDto.setTheatreId(theatreId);
 		movieRepository.save(movieDto);
 	}
 	public void  updateMovie(int movieId, String movieName, int theatreId)
 	{
-		movieDtoOptional = movieRepository.findById(movieId);
-		MovieDto movieDto = null;
-		if (movieDtoOptional.isPresent())
+		movieEntityOptional = movieRepository.findById(movieId);
+		MovieEntity movieDto = null;
+		if (movieEntityOptional.isPresent())
 		{
-			movieDto = movieDtoOptional.get();
+			movieDto = movieEntityOptional.get();
 			movieDto.setMovieName(movieName);
 			movieDto.setTheatreId(theatreId);
 			movieRepository.save(movieDto);
@@ -53,12 +47,6 @@ public class MovieService {
 	}
 	public void  deleteMovie(int movieId)
 	{
-		movieDtoOptional = movieRepository.findById(movieId);
-		MovieDto movieDto = null;
-		if (movieDtoOptional.isPresent()) {
-			movieDto = movieDtoOptional.get();
-			movieRepository.delete(movieDto);
-		}
-			
+		movieRepository.deleteById(movieId);
 	}
 }

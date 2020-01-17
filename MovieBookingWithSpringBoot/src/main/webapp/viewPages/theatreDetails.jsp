@@ -20,6 +20,7 @@
 	
 	<form action="addTheatre" method="post">
 	<table class="table-design">
+	<caption></caption>
 	<th scope="row"></th>
 	<tr>
 		<td><input type="text" name="theatreName" placeholder="theatre name" required></td>
@@ -30,6 +31,7 @@
 	</table>
 	</form>
 	<table class="table-design">
+	<caption></caption>
 		<tr><th scope="row">Theatre Id</th>	<th scope="row">Theatre Name</th> <th scope="row">Location Id</th> </tr>
 	
 			<c:forEach var="theatre" items="${theatreList}">

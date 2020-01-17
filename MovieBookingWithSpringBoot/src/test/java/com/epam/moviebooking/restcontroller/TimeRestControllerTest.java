@@ -1,38 +1,61 @@
 package com.epam.moviebooking.restcontroller;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.http.ResponseEntity;
 
-import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
+import com.epam.moviebooking.entity.TimeEntity;
+import com.epam.moviebooking.service.TimeService;
+import com.epam.moviebooking.webservices.restcontroller.TimeRestController;
 
 class TimeRestControllerTest {
 	
-	String currentDate = LocalDate.now().plusDays(1).toString();
-	List<String> timeList = new ArrayList<String>
-	(Arrays.asList("08:00:00","10:15:00","12:00:00","16:10:00","19:15:00"));
-
+	@Mock
+	private TimeService timeService;
+	@InjectMocks
+	private TimeRestController timeRestController;
+	
+	@BeforeEach
+	void init() {
+		MockitoAnnotations.initMocks(this);
+	}
+	
+	List<TimeEntity> timeEntities = new ArrayList<>();
+	TimeEntity timeEntity = new TimeEntity();
+	
 	@Test
 	void getTime() 
 	{
-		int i =0;
-		RestAssured.baseURI = "http://localhost:8080/restTime";
-		RequestSpecification reqspec = RestAssured.given();
-		Response response= reqspec.get("?dateChoice="+currentDate+"");
-		assertEquals("application/json", response.getContentType());
-		assertEquals(200, response.getStatusCode());
-		JsonPath jp = response.jsonPath();
-		List<String> JsonData = jp.getList("time");
-		for(String str : JsonData)
-			assertEquals(timeList.get(i++), str);
+		String dateChoice = "2020-01-28";
+		LocalDate date = LocalDate.parse(dateChoice);	
+		timeEntity.setTimeId(1);
+		timeEntity.setTime(LocalTime.now());
+		timeEntities.add(timeEntity);
+		when(timeService.getTime(date)).thenReturn(timeEntities);
+		ResponseEntity<List<TimeEntity>> responseEntity = timeRestController.getTime(dateChoice);
+		assertEquals(responseEntity, timeRestController.getTime(dateChoice));
+	}
+	
+	@Test
+	void timeDeatils()
+	{	
+		timeEntity.setTimeId(1);
+		timeEntity.setTime(LocalTime.now());
+		timeEntities.add(timeEntity);
+		when(timeService.timeDetails()).thenReturn(timeEntities);
+		ResponseEntity<List<TimeEntity>> responseEntity = timeRestController.timeDetails();
+		assertEquals(responseEntity, timeRestController.timeDetails());
 	}
 
 }

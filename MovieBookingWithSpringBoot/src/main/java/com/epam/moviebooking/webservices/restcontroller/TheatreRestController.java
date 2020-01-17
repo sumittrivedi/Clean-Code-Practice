@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.epam.moviebooking.dto.TheatreDto;
+import com.epam.moviebooking.entity.TheatreEntity;
 import com.epam.moviebooking.service.TheatreService;
 
 @RestController
@@ -20,16 +20,16 @@ public class TheatreRestController {
 	private TheatreService theatreService;
 	
 	@GetMapping(value="restTheatre", produces={MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<List<TheatreDto>> getTheatre(@RequestParam String locationChoice, @RequestParam String movieChoice)
+	public ResponseEntity<List<TheatreEntity>> getTheatre(@RequestParam String locationChoice, @RequestParam String movieChoice)
 	{
-		List<TheatreDto> theatreList = theatreService.theatreByMovie(locationChoice, movieChoice);		
+		List<TheatreEntity> theatreList = theatreService.theatreByMovie(locationChoice, movieChoice);		
 		return new ResponseEntity<>(theatreList, HttpStatus.OK);
 	}
 	
 	@GetMapping(value="restTheatreDetails", produces={MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<List<TheatreDto>> theatreDetails()
+	public ResponseEntity<List<TheatreEntity>> theatreDetails()
 	{
-		List<TheatreDto> theatreList = theatreService.theatreDetails();		
+		List<TheatreEntity> theatreList = theatreService.theatreDetails();		
 		return new ResponseEntity<>(theatreList, HttpStatus.OK);
 	}
 

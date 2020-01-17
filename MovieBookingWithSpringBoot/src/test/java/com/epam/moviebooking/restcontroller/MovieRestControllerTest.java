@@ -1,39 +1,64 @@
 package com.epam.moviebooking.restcontroller;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
 
-import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
+import com.epam.moviebooking.entity.MovieEntity;
+import com.epam.moviebooking.service.MovieService;
+import com.epam.moviebooking.webservices.restcontroller.MovieRestController;
 
 @SpringBootTest
 class MovieRestControllerTest {
-
-	ArrayList<String> HydMovieList = new ArrayList<String>(Arrays.asList("War","Joker","Dream Girl","Mangalyaan"));
+	
+	@Mock
+	private MovieService movieService;
+	@InjectMocks
+	private MovieRestController movieRestController;
+	
+	@BeforeEach
+	public void init() {
+		MockitoAnnotations.initMocks(this);
+	}
 
 	@Test
-	void getMovieOfHyderabad()
-	{
-		int i =0;
-		RestAssured.baseURI = "http://localhost:8080/restMovie";
-		RequestSpecification reqspec = RestAssured.given();
-		Response response= reqspec.get("?locationChoice=Hyderabad");
-		JsonPath jp = response.jsonPath();
-		List<String> movieList = jp.getList("movieName");
-		for(String str : movieList)
-			assertEquals(HydMovieList.get(i++), str);
-		String content = response.getContentType();
-		int status = response.getStatusCode();
-		assertEquals("application/json", content);
-		assertEquals(200, status);
+	void getMovieTest() {
+		
+		String locationChoice = "Hyderabad";
+		List<MovieEntity> movieEntitylist = new ArrayList<>();
+		MovieEntity movieEntity = new MovieEntity();
+		movieEntity.setMovieId(1);
+		movieEntity.setMovieName("Ramayan");
+		movieEntity.setTheatreId(1);
+		movieEntitylist.add(movieEntity);	
+		when(movieService.movieByLocation(locationChoice)).thenReturn(movieEntitylist);
+		ResponseEntity<List<MovieEntity>> responseEntity = movieRestController.getMovie(locationChoice);
+		assertEquals(responseEntity, movieRestController.getMovie(locationChoice));
+	}
+
+	@Test
+	void movieDetailsTest() {
+		
+		List<MovieEntity> movieEntitylist = new ArrayList<>();
+		MovieEntity movieEntity = new MovieEntity();
+		movieEntity.setMovieId(1);
+		movieEntity.setMovieName("Ramayan");
+		movieEntity.setTheatreId(1);
+		movieEntitylist.add(movieEntity);
+		
+		when(movieService.findAll()).thenReturn(movieEntitylist);
+		ResponseEntity<List<MovieEntity>> responseEntity = movieRestController.movieDetails();
+		assertEquals(responseEntity, movieRestController.movieDetails());
 	}
 
 }

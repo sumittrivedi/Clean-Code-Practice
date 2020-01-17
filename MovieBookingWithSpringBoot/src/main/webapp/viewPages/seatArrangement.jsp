@@ -36,6 +36,7 @@
 			<span>
 				<c:if test="${seatInfo.value}">
 					<table>
+					<caption></caption>
 					<th scope="row"></th>
 					  <tr><td><label for="seatInfos">${seatInfo.key.seatId}</label></td></tr>
 					  <tr><td><input type="checkbox" name="seatInfos"
@@ -46,6 +47,7 @@
 				</c:if>
 				<c:if test="${not seatInfo.value}">
 					<table>
+					<caption></caption>
 					<th scope="row"></th>
 					  <tr><td><label for="seatInfos">${seatInfo.key.seatId}</label></td></tr>
 					  <tr><td><input type="checkbox" name="seatInfos"

@@ -11,7 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.epam.moviebooking.dto.ShowDetailsDto;
+import com.epam.moviebooking.entity.ShowDetailsEntity;
 import com.epam.moviebooking.repository.ShowDetailsRepository;
 
 class ShowDetailsServiceTest {
@@ -19,7 +19,7 @@ class ShowDetailsServiceTest {
 	@Mock
 	private ShowDetailsRepository showDetailsRepository;
 	@Mock
-	private ShowDetailsDto showDetailsDto;
+	private ShowDetailsEntity showDetailsDto;
 	@InjectMocks
 	private ShowDetailsService showDetailsService;
 	
@@ -33,7 +33,7 @@ class ShowDetailsServiceTest {
 	@Test
 	void getShowId() 
 	{
-		ShowDetailsDto dto = new ShowDetailsDto();
+		ShowDetailsEntity dto = new ShowDetailsEntity();
 		dto.setShowId(222);
 		dto.setTheatreId(1);
 		dto.setDate("2019-11-29");

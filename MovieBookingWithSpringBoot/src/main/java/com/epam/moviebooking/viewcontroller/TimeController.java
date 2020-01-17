@@ -1,6 +1,5 @@
 package com.epam.moviebooking.viewcontroller;
 
-import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.epam.moviebooking.dto.TimeDto;
+import com.epam.moviebooking.entity.TimeEntity;
 import com.epam.moviebooking.service.TimeService;
 import com.epam.moviebooking.webservices.restclient.TimeRestClient;
 
@@ -33,14 +32,14 @@ public class TimeController {
 		LocalDate date = LocalDate.parse(dateChoice);
 		ModelAndView mv = new ModelAndView();
 		session.setAttribute("dateChoice", dateChoice);
-		List<TimeDto> timeList = timeRestClient.getTime(date);
+		List<TimeEntity> timeList = timeRestClient.getTime(date);
 		mv.addObject("timeList", timeList);
 		mv.setViewName("time");
 		return mv;
 	}
 	
 	@PostMapping(value = "addTime")
-	public ModelAndView addTime(@RequestParam String time) throws NoSuchAlgorithmException
+	public ModelAndView addTime(@RequestParam String time) 
 	{
 		timeService.addTime(time);
 		return adminController.timeDetails();

@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.epam.moviebooking.dto.UserDto;
+import com.epam.moviebooking.entity.UserEntity;
 import com.epam.moviebooking.repository.UserRepository;
 
 @Service
@@ -20,7 +20,7 @@ public class UserService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException 
 	{
-		Optional<UserDto> userDto = userRepository.findById(username);
+		Optional<UserEntity> userDto = userRepository.findById(username);
 		if(! userDto.isPresent())
 			throw new UsernameNotFoundException("UserName is incorrect");
 	
@@ -29,7 +29,7 @@ public class UserService implements UserDetailsService {
 	
 	public void addUser(String username, String password)
 	{
-		UserDto userDto = new UserDto();
+		UserEntity userDto = new UserEntity();
 		userDto.setUsername(username);
 		userDto.setPassword(password);
 		userDto.setRole("USER");

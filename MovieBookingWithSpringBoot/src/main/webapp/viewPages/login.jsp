@@ -13,7 +13,7 @@ button {
 <body>
 	<div class="main">
 		
-		<h1>Before All</h1>
+		<h1>Movie Booking System</h1>
 		<hr>
 
 		<form method="post" action="login" >

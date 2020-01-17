@@ -22,16 +22,18 @@
 	
 	<form action="addMovie" method="post">
 	<table class="table-design">
+	<caption>Add Movie</caption>
 	<th scope="row"></th>
 	<tr>
 		<td><input type="text" name="movieName" placeholder="movie name" required></td>
 		<td><input type="number" name="theatreId" placeholder="theatreId" required></td>
-		<td><input type="submit" value="Add Movie"></td>
+		<td><input type="submit" value="Add"></td>
 	</tr>
 	
 	</table>
 	</form>
 	<table class="table-design">
+	<caption>Movie Details</caption>
 		<tr><th scope="row">Movie Id</th>	<th scope="row">Movie Name</th> <th scope="row">Theatre Id</th>	</tr>
 	
 			<c:forEach var="movie" items="${movieList}">

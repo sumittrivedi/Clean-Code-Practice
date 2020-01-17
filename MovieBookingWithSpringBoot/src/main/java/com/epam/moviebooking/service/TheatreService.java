@@ -1,15 +1,12 @@
 package com.epam.moviebooking.service;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.epam.moviebooking.dto.TheatreDto;
+import com.epam.moviebooking.entity.TheatreEntity;
 import com.epam.moviebooking.repository.TheatreRepository;
 
 @Service
@@ -17,48 +14,57 @@ public class TheatreService {
 
 	@Autowired
 	private TheatreRepository theatreRepository;
+	@Autowired
+	private Optional<TheatreEntity> theatreOptional;
 	
-	public List<TheatreDto> theatreByMovie(String locationChoice, String movieChoice)
+	public List<TheatreEntity> theatreByMovie(String locationChoice, String movieChoice)
 	{
 		return theatreRepository.theatreByMovie(locationChoice, movieChoice);
 	}
 	
 	public int getTheatreId(String theatreName)
 	{
-		Optional<TheatreDto> theatreDtoOptional = theatreRepository.findByTheatreName(theatreName).stream().findFirst();
+		Optional<TheatreEntity> theatreDtoOptional = theatreRepository.findByTheatreName(theatreName).stream().findFirst();
 		int theatreId = 0;
 		if (theatreDtoOptional.isPresent()) {
-			TheatreDto dto = theatreDtoOptional.get();
+			TheatreEntity dto = theatreDtoOptional.get();
 			theatreId = dto.getTheatreId();
 		}
 		return theatreId;
 	}
 	
-	public List<TheatreDto> theatreDetails()
+	public List<TheatreEntity> theatreDetails()
 	{
-		return (List<TheatreDto>) theatreRepository.findAll();
+		return (List<TheatreEntity>) theatreRepository.findAll();
 	}
 	
-	public void addTheatre(String theatreName, int locationId) throws NoSuchAlgorithmException
+	public void addTheatre(String theatreName, int locationId) 
 	{
-		TheatreDto theatreDto = new TheatreDto();
-		Random random = SecureRandom.getInstanceStrong();
-		int theatreId = random.nextInt();
+		TheatreEntity theatreDto = new TheatreEntity();
 		theatreDto.setLocationId(locationId);
-		theatreDto.setTheatreId(theatreId);
 		theatreDto.setTheatreName(theatreName);
 		theatreRepository.save(theatreDto);
 	}
 	public void updateTheatre(int theatreId, String theatreName, int locationId)
 	{
-		TheatreDto theatreDto = theatreRepository.findById(theatreId).get();
-		theatreDto.setTheatreName(theatreName);
-		theatreDto.setLocationId(locationId);
-		theatreRepository.save(theatreDto);
+		theatreOptional = theatreRepository.findById(theatreId);
+		TheatreEntity theatreDto = null;
+		if(theatreOptional.isPresent())
+		{
+			theatreDto = theatreOptional.get();
+			theatreDto.setTheatreName(theatreName);
+			theatreDto.setLocationId(locationId);
+			theatreRepository.save(theatreDto);
+		}
 	}
 	public void deleteTheatre(int theatreId)
 	{
-		TheatreDto theatreDto = theatreRepository.findById(theatreId).get();
-		theatreRepository.delete(theatreDto);
+		theatreOptional = theatreRepository.findById(theatreId);
+		TheatreEntity theatreEntity = null;
+		if(theatreOptional.isPresent())
+		{
+			theatreEntity = theatreOptional.get();
+			theatreRepository.delete(theatreEntity);
+		}
 	}
 }
