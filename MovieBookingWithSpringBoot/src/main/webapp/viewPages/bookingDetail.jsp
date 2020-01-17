@@ -15,8 +15,13 @@ button {
 </head>
 <body>
 	<div class="main">
+<<<<<<< HEAD
 	
 		<h1>Movie Booking System</h1>
+=======
+		<p>
+			Hey <strong>${customerName}</strong>
+>>>>>>> 9807839e61e8a1dc16a29d7365fcf88847679973
 		
 		<hr>
 		
